@@ -83,27 +83,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* ========== CONTACT FORM ========== */
 const contactForm = document.getElementById('contactForm');
-if (contactForm) {
+const gsheetFrame = document.querySelector('iframe[name="gsheet-frame"]');
+
+function resetFormBtn(btn, originalContent) {
+  btn.innerHTML = originalContent;
+  btn.style.background = '';
+  btn.style.boxShadow = '';
+  btn.disabled = false;
+}
+
+function handleFormSuccess(btn, originalContent) {
+  btn.innerHTML = '✓ Message Sent!';
+  btn.style.background = '#28c840';
+  btn.style.boxShadow = '0 4px 16px rgba(40,200,64,0.3)';
+  contactForm.reset();
+
+  setTimeout(() => {
+    resetFormBtn(btn, originalContent);
+  }, 4000);
+}
+
+if (contactForm && gsheetFrame) {
+  // Listen for iframe load — fires when Apps Script responds
+  gsheetFrame.addEventListener('load', function onFrameLoad() {
+    const btn = contactForm.querySelector('button[type="submit"]');
+    if (btn && btn.disabled) {
+      const originalContent = btn.innerHTML;
+      handleFormSuccess(btn, originalContent.replace('⏳ Sending...', '⏳ Sending…'));
+    }
+  });
+
   contactForm.addEventListener('submit', function() {
     const btn = contactForm.querySelector('button[type="submit"]');
     const originalContent = btn.innerHTML;
     btn.innerHTML = '⏳ Sending...';
     btn.disabled = true;
 
-    // Submits to Google Sheet via hidden iframe — no page reload
-    setTimeout(() => {
-      btn.innerHTML = '✓ Message Sent!';
-      btn.style.background = '#28c840';
-      btn.style.boxShadow = '0 4px 16px rgba(40,200,64,0.3)';
-
-      setTimeout(() => {
-        btn.innerHTML = originalContent;
-        btn.style.background = '';
-        btn.style.boxShadow = '';
-        btn.disabled = false;
-        contactForm.reset();
-      }, 3000);
-    }, 3000);
+    // Safety timeout — if iframe doesn't load within 15s, still reset
+    setTimeout(function() {
+      if (btn.disabled) {
+        resetFormBtn(btn, originalContent);
+      }
+    }, 15000);
   });
 }
 
