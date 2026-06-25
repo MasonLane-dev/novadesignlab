@@ -64,7 +64,7 @@ const observer = new IntersectionObserver((entries) => {
       animateCounters();
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0 });
 
 if (heroStats) observer.observe(heroStats);
 
