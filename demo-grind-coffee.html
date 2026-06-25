@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Grind Coffee — Cafe Website Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #2c1810; background: #faf7f2; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .template-bar { background: #2c1810; color: #d4c5b5; text-align: center; padding: 10px 16px; font-size: 0.8rem; font-weight: 500; }
+    .template-bar a { color: #c17f4e; text-decoration: none; font-weight: 600; }
+    .template-bar a:hover { text-decoration: underline; }
+    nav { padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #2c1810; }
+    .logo span { color: #c17f4e; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { text-decoration: none; color: #5a4a3a; font-size: 0.9rem; font-weight: 500; }
+    .hero { padding: 80px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-badge { display: inline-block; background: rgba(193,127,78,0.12); color: #c17f4e; padding: 6px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1.15; margin-bottom: 20px; }
+    .hero p { color: #5a4a3a; line-height: 1.7; margin-bottom: 32px; font-size: 1.05rem; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+    .btn-primary { background: #2c1810; color: #fff; }
+    .btn-primary:hover { background: #4a2c1e; transform: translateY(-2px); }
+    .btn-outline { border: 2px solid #d4c5b5; color: #2c1810; margin-left: 12px; }
+    .btn-outline:hover { border-color: #c17f4e; color: #c17f4e; }
+    .hero-img { background: linear-gradient(135deg, #d4c5b5, #c17f4e); border-radius: 20px; height: 400px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+    .about { padding: 80px 0; text-align: center; }
+    .about h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 16px; }
+    .about > p { max-width: 650px; margin: 0 auto 48px; color: #5a4a3a; line-height: 1.7; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feature { background: #fff; padding: 32px 24px; border-radius: 16px; border: 1px solid #e8ddd0; }
+    .feature h3 { font-family: 'Playfair Display', serif; margin-bottom: 12px; }
+    .feature p { color: #5a4a3a; font-size: 0.9rem; line-height: 1.7; }
+    .cta-section { padding: 60px 0; text-align: center; background: #2c1810; color: #fff; border-radius: 24px; margin: 40px auto; }
+    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+    .cta-section .btn { background: #c17f4e; color: #fff; }
+    .cta-section .btn:hover { background: #d4955e; }
+    footer { text-align: center; padding: 32px 0; color: #8a7a6a; font-size: 0.85rem; }
+    footer a { color: #c17f4e; text-decoration: none; }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="template-bar">
+    📐 Template Concept — Want a site like this for your business?
+    <a href="https://novadesignlab.netlify.app/#contact">Get yours built →</a>
+  </div>
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">The <span>Grind</span></div>
+      <div class="nav-links">
+        <a href="https://novadesignlab.netlify.app/">Home</a>
+        <a href="https://novadesignlab.netlify.app/#services">Services</a>
+        <a href="https://novadesignlab.netlify.app/#contact">Get This Site</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <section class="hero">
+      <div>
+        <div class="hero-badge">☕ Small Batch. Big Flavor.</div>
+        <h1>Crafted by Hand,<br>Roasted with Heart</h1>
+        <p>We source the finest beans from around the world and roast them in small batches right here in town. Every cup tells a story.</p>
+        <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-primary">Get a Site Like This →</a>
+        <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-outline">Start Your Project</a>
+      </div>
+      <div class="hero-img">☕</div>
+    </section>
+  </div>
+  <section class="about" style="background: #fff;">
+    <div class="container">
+      <h2>More Than Just Coffee</h2>
+      <p>We're a community space, a roastery, and a team of people who believe that great coffee brings people together.</p>
+      <div class="features">
+        <div class="feature">
+          <h3>🌱 Ethical Sourcing</h3>
+          <p>Direct trade partnerships with farms in Ethiopia, Colombia, and Guatemala. Every bean is traceable and fairly traded.</p>
+        </div>
+        <div class="feature">
+          <h3>🔥 Small Batch Roasting</h3>
+          <p>We roast in 30lb batches to ensure consistency and quality. Each roast is cupped and approved before it hits the shelf.</p>
+        </div>
+        <div class="feature">
+          <h3>📦 Monthly Subscription</h3>
+          <p>Fresh-roasted coffee delivered to your door. Customize by bean origin, roast level, and grind preference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <section class="cta-section">
+      <h2>Want a Website Like This?</h2>
+      <p>This is a concept template. We can build a custom site like this for your cafe, restaurant, or food business.</p>
+      <a href="https://novadesignlab.netlify.app/#contact" class="btn">Start Your Project →</a>
+    </section>
+  </div>
+  <footer>
+    <p>📐 Template Concept &mdash; Built by <a href="https://novadesignlab.netlify.app">NovaDesignLab</a></p>
+  </footer>
+</body>
+</html>

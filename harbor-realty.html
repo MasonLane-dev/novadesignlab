@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harbor Realty — Case Study | NovaDesignLab</title>
+  <meta name="description" content="Case study: An elegant estate agency website with property search, virtual tours, mortgage calculator, and agent profiles for Harbor Realty." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .cs-hero {
+      padding: 140px 0 60px;
+      background: linear-gradient(135deg, #0a4a4a 0%, #0d6b6b 50%, #0a8a8a 100%);
+      position: relative; overflow: hidden; color: #fff;
+    }
+    .cs-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    }
+    .cs-breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+    .cs-breadcrumb a { color: #7fd1d1; text-decoration: none; }
+    .cs-breadcrumb a:hover { text-decoration: underline; }
+    .cs-category {
+      display: inline-block; font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: #7fd1d1; background: rgba(127,209,209,0.15);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .cs-hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; color: #fff; }
+    .cs-hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 680px; line-height: 1.7; }
+    .cs-hero-meta { display: flex; flex-wrap: wrap; gap: 24px; margin: 28px 0 0; }
+    .cs-hero-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .cs-hero-meta-item strong { color: #fff; font-weight: 600; }
+
+    .cs-body { padding: 60px 0 80px; background: #fff; }
+    .cs-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; }
+    .cs-content h2 { font-size: 1.5rem; margin: 48px 0 16px; padding-top: 8px; }
+    .cs-content h2:first-child { margin-top: 0; }
+    .cs-content h3 { font-size: 1.1rem; margin: 24px 0 8px; }
+    .cs-content p { font-size: 0.95rem; color: #4a4a5e; line-height: 1.8; margin-bottom: 16px; }
+    .cs-content ul { margin: 0 0 20px; padding-left: 20px; }
+    .cs-content li { font-size: 0.95rem; color: #4a4a5e; line-height: 1.7; margin-bottom: 6px; list-style: disc; }
+    .cs-content li strong { color: #0f0f1a; }
+
+    .cs-highlight {
+      background: linear-gradient(135deg, #eef7f7, #f0fafa);
+      border-left: 4px solid #0d6b6b;
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px; margin: 24px 0;
+    }
+    .cs-highlight p { margin-bottom: 0; font-size: 0.95rem; }
+
+    .cs-sidebar { position: sticky; top: 100px; align-self: start; }
+    .cs-sidebar-card {
+      background: #f8f7ff; border-radius: 12px; padding: 28px;
+      margin-bottom: 24px; border: 1px solid #f0f0f5;
+    }
+    .cs-sidebar-card h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8a8a9e; margin-bottom: 12px; }
+    .cs-sidebar-card .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f5; font-size: 0.85rem; }
+    .cs-sidebar-card .info-row:last-child { border-bottom: none; }
+    .cs-sidebar-card .info-label { color: #8a8a9e; }
+    .cs-sidebar-card .info-value { font-weight: 600; color: #0f0f1a; }
+
+    .cs-sidebar-cta {
+      background: #6c63ff; color: #fff; display: block;
+      padding: 14px 24px; border-radius: 10px; text-align: center;
+      font-weight: 600; font-size: 0.95rem; transition: background 0.3s, transform 0.25s;
+    }
+    .cs-sidebar-cta:hover { background: #5a52e0; transform: translateY(-2px); }
+    .cs-sidebar-demo {
+      display: block; padding: 14px 24px; border-radius: 10px;
+      text-align: center; font-weight: 600; font-size: 0.95rem;
+      border: 2px solid #e0e0e8; color: #0f0f1a; margin-top: 12px; transition: border-color 0.3s;
+    }
+    .cs-sidebar-demo:hover { border-color: #6c63ff; }
+
+    .cs-features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 20px 0;
+    }
+    .cs-feature-item { background: #f8f7ff; border-radius: 10px; padding: 20px; text-align: center; }
+    .cs-feature-item .icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .cs-feature-item h4 { font-size: 0.9rem; margin-bottom: 4px; }
+    .cs-feature-item p { font-size: 0.8rem; color: #8a8a9e; margin: 0; }
+
+    .cs-nav-links {
+      display: flex; justify-content: space-between;
+      padding: 40px 0 0; border-top: 1px solid #f0f0f5; margin-top: 60px;
+    }
+    .cs-nav-link { display: flex; align-items: center; gap: 8px; color: #6c63ff; font-weight: 600; font-size: 0.9rem; }
+    .cs-nav-link:hover { gap: 12px; }
+    .cs-nav-link.right { flex-direction: row-reverse; }
+
+    @media (max-width: 900px) { .cs-layout { grid-template-columns: 1fr; } .cs-sidebar { position: static; } }
+    @media (max-width: 768px) { .cs-hero { padding: 100px 0 40px; } }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo"><span class="logo-icon">🪐</span> Nova<span>DesignLab</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="index.html">Case Studies</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="cs-hero">
+    <div class="container">
+      <p class="cs-breadcrumb"><a href="index.html">← Case Studies</a></p>
+      <span class="cs-category">Real Estate</span>
+      <h1>Harbor Realty — Estate Agency Website</h1>
+      <p class="cs-hero-sub">An elegant, trustworthy digital presence for a real estate agency — with property search, agent profiles, virtual tours, and a mortgage calculator built to convert browsers into buyers and sellers.</p>
+      <div class="cs-hero-meta">
+        <span class="cs-hero-meta-item"><strong>Client:</strong> Harbor Realty (Concept Project)</span>
+        <span class="cs-hero-meta-item"><strong>Timeline:</strong> 3 weeks</span>
+        <span class="cs-hero-meta-item"><strong>Role:</strong> Design & Development</span>
+        <span class="cs-hero-meta-item"><strong>Category:</strong> Real Estate</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="cs-body">
+    <div class="container">
+      <div class="cs-layout">
+        <div class="cs-content">
+
+          <h2>Overview</h2>
+          <p>Harbor Realty is a concept estate agency brand built around trust, professionalism, and local market expertise. The website needed to serve two distinct audiences — home buyers searching for their next property, and homeowners considering selling — with a design that feels established, secure, and genuinely helpful.</p>
+
+          <h2>The Problem</h2>
+          <p>Real estate is one of the most competitive online spaces. Major portals like Rightmove and Zoopla dominate traffic, but a well-designed agency website still plays a critical role in establishing credibility and capturing direct leads. The challenges:</p>
+          <ul>
+            <li><strong>Dual-audience navigation</strong> — buyers want listings and virtual tours; sellers want valuations and agent expertise. The site had to serve both without confusing either.</li>
+            <li><strong>Trust deficit</strong> — estate agencies face scepticism. The design needed to feel transparent, professional, and local — not corporate or pushy.</li>
+            <li><strong>Information density</strong> — property listings contain huge amounts of information (photos, floor plans, descriptions, locations, prices). The layout had to present this clearly without overwhelming the user.</li>
+            <li><strong>Lead generation</strong> — every page needed a reason to capture a contact detail, without being aggressive about it.</li>
+          </ul>
+
+          <h2>The Solution</h2>
+          <p>I designed Harbor Realty with a calm, sophisticated colour palette — teal and navy gradients that evoke trust and stability, paired with plenty of white space and clean typography. The overall feel is premium but approachable.</p>
+
+          <p>The site architecture was designed around the two user journeys:</p>
+          <ul>
+            <li><strong>For buyers:</strong> A hero section with a prominent property search bar, a featured listings grid with high-quality imagery, a neighbourhood guides section with local area information, and individual property pages with multiple photos, key features, and an inquiry form.</li>
+            <li><strong>For sellers:</strong> A clear valuation CTA in the hero and navigation, agent profiles with local expertise, a mortgage calculator to help buyers understand affordability, and contact forms on every listing.</li>
+          </ul>
+
+          <p>The agent directory was a particular focus — each agent gets a full profile with photo, speciality areas, experience, and a direct booking link. This humanises the agency and builds trust before a visitor ever makes contact.</p>
+
+          <div class="cs-highlight">
+            <p><strong>Key design decision:</strong> I chose not to replicate Rightmove's dense listing grid. Instead, each property gets space to breathe — larger images, clearer pricing, and a "featured" treatment for premium listings. This positions Harbor Realty as a boutique, high-service agency rather than a high-volume portal.</p>
+          </div>
+
+          <h2>Key Features</h2>
+          <div class="cs-features">
+            <div class="cs-feature-item">
+              <div class="icon">🔍</div>
+              <h4>Property Search</h4>
+              <p>Search bar with filters for location, price, type, and bedrooms</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">🏠</div>
+              <h4>Featured Listings</h4>
+              <p>Curated grid of featured properties with images and key details</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">👔</div>
+              <h4>Agent Profiles</h4>
+              <p>Full agent directory with specialties, areas, and contact options</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">🧮</div>
+              <h4>Mortgage Calc</h4>
+              <p>Interactive calculator to estimate monthly payments</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">🗺️</div>
+              <h4>Neighbourhoods</h4>
+              <p>Local area guides with school info, transport links, and amenities</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">📱</div>
+              <h4>Responsive</h4>
+              <p>Fully mobile-optimised — property browsing on the go</p>
+            </div>
+          </div>
+
+          <h2>Tech Stack</h2>
+          <ul>
+            <li><strong>HTML5</strong> — semantic, SEO-optimised structure with Open Graph tags for property sharing</li>
+            <li><strong>CSS3</strong> — custom design with CSS grid for listing layouts, responsive breakpoints, and animations</li>
+            <li><strong>JavaScript</strong> — property filter system, mortgage calculator, image gallery, and smooth scroll navigation</li>
+            <li><strong>Google Fonts</strong> — Inter for clean, professional readability</li>
+            <li><strong>Google Maps API</strong> — local area information and property location pins</li>
+          </ul>
+          <p>All vanilla — no frameworks, no build steps. The site is lightweight, fast-loading, and easily hostable on any static platform.</p>
+
+          <h2>Results</h2>
+          <p>Harbor Realty shows how a well-designed agency website can build trust and generate leads in a competitive market:</p>
+          <ul>
+            <li><strong>Dual conversion paths</strong> — buyers can explore listings and inquire; sellers can request a valuation. Neither path conflicts with the other.</li>
+            <li><strong>Local authority</strong> — neighbourhood guides and agent local knowledge sections position the agency as the expert in its area.</li>
+            <li><strong>Trust through transparency</strong> — agent profiles, clear pricing on listings, and a functional mortgage calculator all build credibility.</li>
+            <li><strong>Mobile-first browsing</strong> — optimised for the way most people browse properties today (on their phones, often outside of traditional hours).</li>
+          </ul>
+
+          <div class="cs-highlight">
+            <p><strong>What I'd do differently for a real client:</strong> Integrate with a real property CRM (like Alto or Reapit) for live listings, add a virtual tour feature (Matterport), and connect the mortgage calculator to a live broker API for actual rate quotes.</p>
+          </div>
+
+          <div class="cs-nav-links">
+            <a href="stag-blade.html" class="cs-nav-link">← Stag & Blade</a>
+            <a href="index.html" class="cs-nav-link right">All Case Studies →</a>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="cs-sidebar">
+          <div class="cs-sidebar-card">
+            <h4>Project Details</h4>
+            <div class="info-row"><span class="info-label">Client</span><span class="info-value">Harbor Realty</span></div>
+            <div class="info-row"><span class="info-label">Category</span><span class="info-value">Real Estate</span></div>
+            <div class="info-row"><span class="info-label">Timeline</span><span class="info-value">3 weeks</span></div>
+            <div class="info-row"><span class="info-label">Pages</span><span class="info-value">1-page + property detail</span></div>
+            <div class="info-row"><span class="info-label">Tech</span><span class="info-value">HTML / CSS / JS</span></div>
+          </div>
+
+          <a href="../harbor-realty/" target="_blank" class="cs-sidebar-cta">🌐 View Live Demo</a>
+          <a href="../index.html#contact" class="cs-sidebar-demo">Start a Similar Project →</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo"><span class="logo-icon">🪐</span> Nova<span>DesignLab</span></a>
+          <p>Cardiff-based freelance web designer building affordable, conversion-focused websites for local businesses.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="https://www.linkedin.com/in/masonlane-web" target="_blank" aria-label="LinkedIn">💼</a>
+            <a href="https://github.com/masonlane-nova" target="_blank" aria-label="GitHub">🐙</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <a href="../index.html#services">Web Design</a>
+          <a href="../index.html#pricing">Pricing</a>
+          <a href="../index.html#work">Portfolio</a>
+          <a href="index.html">Case Studies</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:Mason_08642@hotmail.com">Mason_08642@hotmail.com</a>
+          <a href="../index.html#contact">Get a Quote</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NovaDesignLab. Built with care in Cardiff.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function(){
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.getElementById('hamburger').addEventListener('click', function(){
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

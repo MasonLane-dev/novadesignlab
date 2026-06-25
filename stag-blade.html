@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stag & Blade — Case Study | NovaDesignLab</title>
+  <meta name="description" content="Case study: A premium barbershop website built with online booking, service menus, and staff profiles for Stag & Blade." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .cs-hero {
+      padding: 140px 0 60px;
+      background: linear-gradient(135deg, #2c1810 0%, #4a2a1a 50%, #6b3a2a 100%);
+      position: relative; overflow: hidden; color: #fff;
+    }
+    .cs-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(226,176,74,0.12) 0%, transparent 70%);
+    }
+    .cs-breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+    .cs-breadcrumb a { color: #e2b04a; text-decoration: none; }
+    .cs-breadcrumb a:hover { text-decoration: underline; }
+    .cs-category {
+      display: inline-block; font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: #e2b04a; background: rgba(226,176,74,0.15);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .cs-hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; color: #fff; }
+    .cs-hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 680px; line-height: 1.7; }
+    .cs-hero-meta { display: flex; flex-wrap: wrap; gap: 24px; margin: 28px 0 0; }
+    .cs-hero-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .cs-hero-meta-item strong { color: #fff; font-weight: 600; }
+
+    .cs-body { padding: 60px 0 80px; background: #fff; }
+    .cs-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; }
+    .cs-content h2 { font-size: 1.5rem; margin: 48px 0 16px; padding-top: 8px; }
+    .cs-content h2:first-child { margin-top: 0; }
+    .cs-content h3 { font-size: 1.1rem; margin: 24px 0 8px; }
+    .cs-content p { font-size: 0.95rem; color: #4a4a5e; line-height: 1.8; margin-bottom: 16px; }
+    .cs-content ul { margin: 0 0 20px; padding-left: 20px; }
+    .cs-content li { font-size: 0.95rem; color: #4a4a5e; line-height: 1.7; margin-bottom: 6px; list-style: disc; }
+    .cs-content li strong { color: #0f0f1a; }
+
+    .cs-highlight {
+      background: linear-gradient(135deg, #fdf6ee, #faf1e0);
+      border-left: 4px solid #e2b04a;
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px; margin: 24px 0;
+    }
+    .cs-highlight p { margin-bottom: 0; font-size: 0.95rem; }
+
+    .cs-sidebar { position: sticky; top: 100px; align-self: start; }
+    .cs-sidebar-card {
+      background: #f8f7ff; border-radius: 12px; padding: 28px;
+      margin-bottom: 24px; border: 1px solid #f0f0f5;
+    }
+    .cs-sidebar-card h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8a8a9e; margin-bottom: 12px; }
+    .cs-sidebar-card .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f5; font-size: 0.85rem; }
+    .cs-sidebar-card .info-row:last-child { border-bottom: none; }
+    .cs-sidebar-card .info-label { color: #8a8a9e; }
+    .cs-sidebar-card .info-value { font-weight: 600; color: #0f0f1a; }
+
+    .cs-sidebar-cta {
+      background: #6c63ff; color: #fff; display: block;
+      padding: 14px 24px; border-radius: 10px; text-align: center;
+      font-weight: 600; font-size: 0.95rem; transition: background 0.3s, transform 0.25s;
+    }
+    .cs-sidebar-cta:hover { background: #5a52e0; transform: translateY(-2px); }
+    .cs-sidebar-demo {
+      display: block; padding: 14px 24px; border-radius: 10px;
+      text-align: center; font-weight: 600; font-size: 0.95rem;
+      border: 2px solid #e0e0e8; color: #0f0f1a; margin-top: 12px; transition: border-color 0.3s;
+    }
+    .cs-sidebar-demo:hover { border-color: #6c63ff; }
+
+    .cs-features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 20px 0;
+    }
+    .cs-feature-item { background: #f8f7ff; border-radius: 10px; padding: 20px; text-align: center; }
+    .cs-feature-item .icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .cs-feature-item h4 { font-size: 0.9rem; margin-bottom: 4px; }
+    .cs-feature-item p { font-size: 0.8rem; color: #8a8a9e; margin: 0; }
+
+    .cs-nav-links {
+      display: flex; justify-content: space-between;
+      padding: 40px 0 0; border-top: 1px solid #f0f0f5; margin-top: 60px;
+    }
+    .cs-nav-link { display: flex; align-items: center; gap: 8px; color: #6c63ff; font-weight: 600; font-size: 0.9rem; }
+    .cs-nav-link:hover { gap: 12px; }
+    .cs-nav-link.right { flex-direction: row-reverse; }
+
+    @media (max-width: 900px) { .cs-layout { grid-template-columns: 1fr; } .cs-sidebar { position: static; } }
+    @media (max-width: 768px) { .cs-hero { padding: 100px 0 40px; } }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo"><span class="logo-icon">🪐</span> Nova<span>DesignLab</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="index.html">Case Studies</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="cs-hero">
+    <div class="container">
+      <p class="cs-breadcrumb"><a href="index.html">← Case Studies</a></p>
+      <span class="cs-category">Barbershop / Personal Services</span>
+      <h1>Stag & Blade — Barbershop Website</h1>
+      <p class="cs-hero-sub">A premium, masculine brand experience designed for a modern barbershop — with online booking, service menus, staff profiles, and social proof to fill chairs every day.</p>
+      <div class="cs-hero-meta">
+        <span class="cs-hero-meta-item"><strong>Client:</strong> Stag & Blade (Concept Project)</span>
+        <span class="cs-hero-meta-item"><strong>Timeline:</strong> 2.5 weeks</span>
+        <span class="cs-hero-meta-item"><strong>Role:</strong> Design & Development</span>
+        <span class="cs-hero-meta-item"><strong>Category:</strong> Barbershop</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="cs-body">
+    <div class="container">
+      <div class="cs-layout">
+        <div class="cs-content">
+
+          <h2>Overview</h2>
+          <p>Stag & Blade is a concept barbershop brand that blends traditional barbering with a modern, premium experience. The website needed to reflect this duality — classic enough to feel established, modern enough to attract today's clientele. The primary goal: make it dead simple for customers to book an appointment online.</p>
+
+          <h2>The Problem</h2>
+          <p>Barbershops operate on a simple model — cut hair, build relationships, keep chairs full. But many independent barbers rely on walk-ins or phone bookings, which means missed appointments and unpredictable revenue. The challenges were clear:</p>
+          <ul>
+            <li><strong>Barrier to booking</strong> — phone-only booking is a friction point for younger customers who prefer to book online.</li>
+            <li><strong>Service visibility</strong> — customers don't know what's available until they're in the chair. A clear service menu online helps set expectations and increase average transaction value.</li>
+            <li><strong>Staff dependency</strong> — customers often have a preferred barber. The site needed to showcase individual stylists so customers could book with confidence.</li>
+            <li><strong>Local discovery</strong> — most new customers find barbershops through Google. The site had to be optimised for local search.</li>
+          </ul>
+
+          <h2>The Solution</h2>
+          <p>I designed Stag & Blade with a warm, masculine colour palette — deep browns, gold accents, and cream backgrounds — inspired by the traditional barbershop experience but with a clean, modern layout. The typography uses a single font family (Inter) but with varied weights and sizes to create hierarchy without clutter.</p>
+
+          <p>Key structural decisions:</p>
+          <ul>
+            <li><strong>Booking-first design</strong> — the book-now CTA is prominently placed in the hero, the navigation, and as a sticky element on mobile. Every path leads to a booking.</li>
+            <li><strong>Service catalogue with pricing</strong> — a clear, visual menu of services with prices, estimated times, and descriptions. No surprises.</li>
+            <li><strong>Barber profiles</strong> — each barber gets a card with their photo, speciality, experience, and a "Book with [Name]" button. This builds personal connections before the first appointment.</li>
+            <li><strong>Social proof</strong> — an Instagram feed integration showcases recent work, and a testimonials section builds trust.</li>
+          </ul>
+
+          <div class="cs-highlight">
+            <p><strong>Key design decision:</strong> I made the booking flow the centrepiece — not a separate page, but a modal that can be triggered from anywhere on the site. This means customers can book in 2 clicks without ever leaving the page they're on.</p>
+          </div>
+
+          <h2>Key Features</h2>
+          <div class="cs-features">
+            <div class="cs-feature-item">
+              <div class="icon">✂️</div>
+              <h4>Online Booking</h4>
+              <p>Modal-based booking flow, triggerable from any page section</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">📋</div>
+              <h4>Service Menu</h4>
+              <p>Full catalogue with pricing, descriptions, and estimated times</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">👤</div>
+              <h4>Barber Profiles</h4>
+              <p>Individual stylist cards with specialities and booking links</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">📍</div>
+              <h4>Location & Hours</h4>
+              <p>Google Maps embed with opening hours and contact info</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">📸</div>
+              <h4>Instagram Feed</h4>
+              <p>Live social proof showing recent cuts and styles</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">⭐</div>
+              <h4>Testimonials</h4>
+              <p>Customer reviews with star ratings and photos</p>
+            </div>
+          </div>
+
+          <h2>Tech Stack</h2>
+          <ul>
+            <li><strong>HTML5</strong> — semantic, accessibility-focused markup</li>
+            <li><strong>CSS3</strong> — custom design system with CSS variables, flexbox, and grid</li>
+            <li><strong>JavaScript</strong> — booking modal, Instagram feed widget, smooth scroll, testimonial carousel</li>
+            <li><strong>Google Fonts</strong> — Inter for clean, professional typography</li>
+            <li><strong>Google Maps API</strong> — embedded map with location and directions</li>
+          </ul>
+          <p>The site is fully static with no server-side dependencies — meaning it can be hosted anywhere, loads instantly, and requires zero maintenance for the client beyond basic content updates.</p>
+
+          <h2>Results</h2>
+          <p>Stag & Blade demonstrates the impact a purpose-built website can have for a service-based business:</p>
+          <ul>
+            <li><strong>Reduced booking friction</strong> — online booking removes the need for phone calls, capturing bookings 24/7.</li>
+            <li><strong>Higher average ticket</strong> — displaying the full service menu with pricing encourages upsells (beard trim with a haircut, hot towel finish, etc.).</li>
+            <li><strong>Personal connection</strong> — barber profiles help new customers choose with confidence, reducing no-shows.</li>
+            <li><strong>Local SEO ready</strong> — structured location data, Google Maps integration, and local keyword targeting help the business appear in "barbershop near me" searches.</li>
+          </ul>
+
+          <div class="cs-highlight">
+            <p><strong>What I'd do differently for a real client:</strong> Integrate a real booking API (like Booksy or Fresha), add SMS appointment reminders to reduce no-shows, and connect Instagram directly via the Graph API for automatic feed updates.</p>
+          </div>
+
+          <div class="cs-nav-links">
+            <a href="iron-haven.html" class="cs-nav-link">← Iron Haven</a>
+            <a href="harbor-realty.html" class="cs-nav-link right">Next: Harbor Realty →</a>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="cs-sidebar">
+          <div class="cs-sidebar-card">
+            <h4>Project Details</h4>
+            <div class="info-row"><span class="info-label">Client</span><span class="info-value">Stag & Blade</span></div>
+            <div class="info-row"><span class="info-label">Category</span><span class="info-value">Barbershop</span></div>
+            <div class="info-row"><span class="info-label">Timeline</span><span class="info-value">2.5 weeks</span></div>
+            <div class="info-row"><span class="info-label">Pages</span><span class="info-value">1-page + booking modal</span></div>
+            <div class="info-row"><span class="info-label">Tech</span><span class="info-value">HTML / CSS / JS</span></div>
+          </div>
+
+          <a href="../stag-blade/" target="_blank" class="cs-sidebar-cta">🌐 View Live Demo</a>
+          <a href="../index.html#contact" class="cs-sidebar-demo">Start a Similar Project →</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo"><span class="logo-icon">🪐</span> Nova<span>DesignLab</span></a>
+          <p>Cardiff-based freelance web designer building affordable, conversion-focused websites for local businesses.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="https://www.linkedin.com/in/masonlane-web" target="_blank" aria-label="LinkedIn">💼</a>
+            <a href="https://github.com/masonlane-nova" target="_blank" aria-label="GitHub">🐙</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <a href="../index.html#services">Web Design</a>
+          <a href="../index.html#pricing">Pricing</a>
+          <a href="../index.html#work">Portfolio</a>
+          <a href="index.html">Case Studies</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:Mason_08642@hotmail.com">Mason_08642@hotmail.com</a>
+          <a href="../index.html#contact">Get a Quote</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NovaDesignLab. Built with care in Cardiff.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function(){
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.getElementById('hamburger').addEventListener('click', function(){
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

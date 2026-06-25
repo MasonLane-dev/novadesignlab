@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Haven Gym — Gym Website Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #fff; background: #0a0a0a; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .template-bar { background: #ff4444; color: #fff; text-align: center; padding: 10px 16px; font-size: 0.8rem; font-weight: 600; }
+    .template-bar a { color: #fff; text-decoration: underline; font-weight: 700; }
+    nav { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #fff; }
+    .logo span { color: #ff4444; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { text-decoration: none; color: #aaa; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+    .nav-links a:hover { color: #ff4444; }
+    .hero { padding: 100px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-badge { display: inline-block; background: rgba(255,68,68,0.12); color: #ff4444; padding: 6px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Oswald', sans-serif; font-size: 4rem; line-height: 1.1; text-transform: uppercase; margin-bottom: 20px; }
+    .hero h1 span { color: #ff4444; }
+    .hero p { color: #aaa; line-height: 1.7; margin-bottom: 32px; font-size: 1.05rem; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 4px; font-weight: 600; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: all 0.3s; }
+    .btn-primary { background: #ff4444; color: #fff; }
+    .btn-primary:hover { background: #cc3333; transform: translateY(-2px); }
+    .btn-outline { border: 2px solid #333; color: #fff; margin-left: 12px; }
+    .btn-outline:hover { border-color: #ff4444; color: #ff4444; }
+    .hero-img { background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border: 1px solid #333; border-radius: 8px; height: 420px; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+    .classes { padding: 100px 0; text-align: center; }
+    .classes h2 { font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 12px; }
+    .classes > p { color: #aaa; max-width: 550px; margin: 0 auto 48px; }
+    .class-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .class-card { background: #111; border: 1px solid #222; padding: 32px 24px; border-radius: 8px; transition: border-color 0.3s, transform 0.3s; }
+    .class-card:hover { border-color: #ff4444; transform: translateY(-4px); }
+    .class-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; margin-bottom: 8px; }
+    .class-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
+    .cta { padding: 80px 0; text-align: center; background: linear-gradient(135deg, #111, #1a0000); border-radius: 8px; margin: 40px auto; border: 1px solid #222; }
+    .cta h2 { font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 12px; }
+    .cta p { color: #aaa; margin-bottom: 24px; }
+    footer { text-align: center; padding: 32px 0; color: #555; font-size: 0.85rem; }
+    footer a { color: #ff4444; text-decoration: none; }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 60px 0; }
+      .hero h1 { font-size: 2.5rem; }
+      .class-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="template-bar">
+    📐 Template Concept — Want a site like this for your gym?
+    <a href="https://novadesignlab.netlify.app/#contact">Get yours built →</a>
+  </div>
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">Iron <span>Haven</span></div>
+      <div class="nav-links">
+        <a href="https://novadesignlab.netlify.app/">Home</a>
+        <a href="https://novadesignlab.netlify.app/#services">Services</a>
+        <a href="https://novadesignlab.netlify.app/#contact">Get This Site</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <section class="hero">
+      <div>
+        <div class="hero-badge">⚡ New Member Special — 50% Off First Month</div>
+        <h1>Forge Your<br><span>Strongest</span> Self</h1>
+        <p>State-of-the-art equipment, expert trainers, and a community that pushes you to be better every single day. No judgment. Just results.</p>
+        <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-primary">Get a Site Like This →</a>
+        <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-outline">Start Your Project</a>
+      </div>
+      <div class="hero-img">💪</div>
+    </section>
+  </div>
+  <section class="classes" style="background: #0a0a0a;">
+    <div class="container">
+      <h2>Our Classes</h2>
+      <p>From strength training to high-intensity cardio — there's something for every fitness level.</p>
+      <div class="class-grid">
+        <div class="class-card">
+          <h3>🏋️ Powerlifting</h3>
+          <p>Build raw strength with compound lifts. Coached technique, progressive overload, and personalized programming.</p>
+        </div>
+        <div class="class-card">
+          <h3>🔥 HIIT</h3>
+          <p>High-intensity interval training to torch calories and build endurance. 45 minutes. Maximum results.</p>
+        </div>
+        <div class="class-card">
+          <h3>🧘 Recovery & Mobility</h3>
+          <p>Stretch, roll, and recover. Essential for injury prevention and long-term progress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <section class="cta">
+      <h2>Want a Website Like This?</h2>
+      <p>This is a concept template for gyms and fitness centers. We can build a custom version for your business.</p>
+      <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-primary">Get Your Site →</a>
+    </section>
+  </div>
+  <footer>
+    <p>📐 Template Concept &mdash; Built by <a href="https://novadesignlab.netlify.app">NovaDesignLab</a></p>
+  </footer>
+</body>
+</html>

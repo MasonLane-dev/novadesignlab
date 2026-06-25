@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harbor Realty — Real Estate Website Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #1a2a3a; background: #fff; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .template-bar { background: #0d6b6b; color: #d0e8e8; text-align: center; padding: 10px 16px; font-size: 0.8rem; font-weight: 500; }
+    .template-bar a { color: #fff; text-decoration: none; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.3); }
+    .template-bar a:hover { border-bottom-color: #fff; }
+    nav { padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.06); background: #fff; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #0d6b6b; }
+    .logo span { color: #1a2a3a; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { text-decoration: none; color: #5a6a7a; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: #0d6b6b; }
+    .nav-cta { background: #0d6b6b; color: #fff !important; padding: 10px 22px; border-radius: 6px; font-weight: 600 !important; }
+    .nav-cta:hover { background: #095555 !important; }
+    .hero { padding: 80px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-badge { display: inline-block; background: rgba(13,107,107,0.08); color: #0d6b6b; padding: 6px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1.15; margin-bottom: 20px; }
+    .hero h1 span { color: #0d6b6b; }
+    .hero p { color: #5a6a7a; line-height: 1.7; margin-bottom: 32px; font-size: 1.05rem; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+    .btn-primary { background: #0d6b6b; color: #fff; }
+    .btn-primary:hover { background: #095555; transform: translateY(-2px); }
+    .btn-outline { border: 2px solid #d0d8e0; color: #1a2a3a; margin-left: 12px; }
+    .btn-outline:hover { border-color: #0d6b6b; color: #0d6b6b; }
+    .hero-img { background: linear-gradient(135deg, #d0e8e8, #a8d4d4); border-radius: 16px; height: 400px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+    .search { padding: 60px 0; text-align: center; background: #f5fafa; }
+    .search h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 12px; }
+    .search > p { color: #5a6a7a; margin-bottom: 32px; }
+    .search-bar { display: flex; max-width: 600px; margin: 0 auto; gap: 12px; }
+    .search-bar input { flex: 1; padding: 14px 20px; border: 1px solid #d0d8e0; border-radius: 8px; font-size: 1rem; outline: none; }
+    .search-bar input:focus { border-color: #0d6b6b; }
+    .search-bar .btn { background: #0d6b6b; color: #fff; border: none; cursor: pointer; }
+    .listings { padding: 80px 0; }
+    .listings h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 40px; text-align: center; }
+    .listing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .listing { border-radius: 12px; overflow: hidden; border: 1px solid #e8ecf0; transition: transform 0.3s; }
+    .listing:hover { transform: translateY(-4px); }
+    .listing-img { height: 200px; background: linear-gradient(135deg, #0d6b6b, #1a9a9a); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 700; }
+    .listing-info { padding: 20px; }
+    .listing-info h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 6px; }
+    .listing-info .price { color: #0d6b6b; font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+    .listing-info p { color: #5a6a7a; font-size: 0.9rem; }
+    .listing-details { display: flex; gap: 16px; margin-top: 12px; color: #888; font-size: 0.85rem; }
+    .agents { padding: 60px 0; background: #f5fafa; text-align: center; }
+    .agents h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 40px; }
+    .agent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .agent-card { background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #e8ecf0; }
+    .agent-card .avatar { width: 72px; height: 72px; border-radius: 50%; background: #0d6b6b; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #fff; font-weight: 700; }
+    .agent-card h4 { font-family: 'Playfair Display', serif; }
+    .agent-card p { color: #888; font-size: 0.85rem; }
+    .cta { padding: 60px; text-align: center; background: linear-gradient(135deg, #0d6b6b, #095555); border-radius: 16px; margin: 40px auto; color: #fff; }
+    .cta h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 12px; }
+    .cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+    .cta .btn { background: #fff; color: #0d6b6b; }
+    footer { text-align: center; padding: 32px 0; color: #8a9aaa; font-size: 0.85rem; }
+    footer a { color: #0d6b6b; text-decoration: none; }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .listing-grid, .agent-grid { grid-template-columns: 1fr; }
+      .search-bar { flex-direction: column; }
+      .hero h1 { font-size: 2.2rem; }
+      .btn-outline { margin-left: 0; margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="template-bar">
+    📐 Template Concept — Want a site like this for your realty business?
+    <a href="https://novadesignlab.netlify.app/#contact">Get yours built →</a>
+  </div>
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">Harbor <span>Realty</span></div>
+      <div class="nav-links">
+        <a href="https://novadesignlab.netlify.app/">Home</a>
+        <a href="https://novadesignlab.netlify.app/#services">Services</a>
+        <a href="https://novadesignlab.netlify.app/#contact" class="nav-cta">Get This Site</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <section class="hero">
+      <div>
+        <div class="hero-badge">🏡 Your Dream Home Awaits</div>
+        <h1>Find Your <span>Perfect</span> Place to Call Home</h1>
+        <p>Expert guidance through every step of your real estate journey. From first-time buyers to seasoned investors — we're here to help you find the perfect property.</p>
+        <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-primary">Get a Site Like This →</a>
+        <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-outline">Start Your Project</a>
+      </div>
+      <div class="hero-img">🏡</div>
+    </section>
+  </div>
+  <section class="search">
+    <div class="container">
+      <h2>Search Properties</h2>
+      <p>Find your dream home from our curated listings.</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Search by city, neighborhood, or ZIP...">
+        <button class="btn">🔍 Search</button>
+      </div>
+    </div>
+  </section>
+  <section class="listings">
+    <div class="container">
+      <h2>Featured Properties</h2>
+      <div class="listing-grid">
+        <div class="listing">
+          <div class="listing-img">Modern Villa</div>
+          <div class="listing-info">
+            <h3>124 Oceanview Drive</h3>
+            <div class="price">$625,000</div>
+            <p>Stunning 4-bed modern home with panoramic ocean views. Open-plan living, chef's kitchen, and private pool.</p>
+            <div class="listing-details">
+              <span>🛏️ 4 Beds</span>
+              <span>🛁 3 Baths</span>
+              <span>📐 2,400 sqft</span>
+            </div>
+          </div>
+        </div>
+        <div class="listing">
+          <div class="listing-img">Charming Bungalow</div>
+          <div class="listing-info">
+            <h3>87 Maple Street</h3>
+            <div class="price">$389,000</div>
+            <p>Beautifully renovated 3-bed bungalow in family-friendly neighborhood. Hardwood floors, new kitchen, large yard.</p>
+            <div class="listing-details">
+              <span>🛏️ 3 Beds</span>
+              <span>🛁 2 Baths</span>
+              <span>📐 1,600 sqft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="agents">
+    <div class="container">
+      <h2>Meet Our Agents</h2>
+      <div class="agent-grid">
+        <div class="agent-card">
+          <div class="avatar">SR</div>
+          <h4>Sarah Reynolds</h4>
+          <p>Broker · 14 years experience</p>
+        </div>
+        <div class="agent-card">
+          <div class="avatar">JM</div>
+          <h4>James Moore</h4>
+          <p>Senior Agent · 9 years experience</p>
+        </div>
+        <div class="agent-card">
+          <div class="avatar">LK</div>
+          <h4>Lisa Kim</h4>
+          <p>Buyer Specialist · 6 years experience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <section class="cta">
+      <h2>Want a Website Like This?</h2>
+      <p>This is a concept template for real estate agencies. We can build a custom version for your business.</p>
+      <a href="https://novadesignlab.netlify.app/#contact" class="btn">Get Your Site →</a>
+    </section>
+  </div>
+  <footer>
+    <p>📐 Template Concept &mdash; Built by <a href="https://novadesignlab.netlify.app">NovaDesignLab</a></p>
+  </footer>
+</body>
+</html>
