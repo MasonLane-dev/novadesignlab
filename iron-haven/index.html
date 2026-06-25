@@ -3,188 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iron Haven Gym — Gym Website Concept</title>
+  <title>Style: Bold & Vibrant — NovaDesignLab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; color: #fff; background: #0a0a0a; overflow-x: hidden; }
+    body { font-family: 'Space Grotesk', sans-serif; color: #fff; background: #0f0f1a; overflow-x: hidden; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-    /* Template Bar */
-    .template-bar { background: #ff4444; color: #fff; text-align: center; padding: 10px 16px; font-size: 0.8rem; font-weight: 600; }
-    .template-bar a { color: #fff; text-decoration: underline; font-weight: 700; }
+    .template-bar { background: #1a1a2e; color: #8888aa; text-align: center; padding: 10px 16px; font-size: 0.8rem; font-weight: 500; }
+    .template-bar a { color: #ff6b6b; text-decoration: none; font-weight: 600; }
+    .template-bar a:hover { text-decoration: underline; }
 
-    /* Animations */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,68,68,0.4); } 50% { box-shadow: 0 0 0 20px rgba(255,68,68,0); } }
-    @keyframes neonPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-    .anim-fade-up { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
-    .anim-fade-up-d1 { opacity: 0; animation: fadeInUp 0.8s ease 0.15s forwards; }
-    .anim-fade-up-d2 { opacity: 0; animation: fadeInUp 0.8s ease 0.3s forwards; }
-    .anim-fade-up-d3 { opacity: 0; animation: fadeInUp 0.8s ease 0.45s forwards; }
-    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .style-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,107,107,0.15); color: #ff6b6b; font-size: 0.75rem; font-weight: 600; padding: 6px 16px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    .style-badge span { font-size: 1rem; }
 
-    nav { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.06); animation: fadeInDown 0.6s ease; }
+    @keyframes zoomFade { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    @keyframes glow { 0%, 100% { text-shadow: 0 0 20px rgba(255,107,107,0.3); } 50% { text-shadow: 0 0 40px rgba(255,107,107,0.6); } }
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .anim-hero { animation: zoomFade 0.8s ease forwards; }
+    .anim-hero-d1 { animation: slideUp 0.8s ease 0.2s both; }
+    .anim-reveal { opacity: 0; transform: translateY(40px) scale(0.97); transition: all 0.7s ease; }
+    .anim-reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+    .gradient-bg { background: linear-gradient(-45deg, #0f0f1a, #1a0a2e, #2d0a1e, #0f0f1a); background-size: 400% 400%; animation: gradientShift 12s ease infinite; }
+
+    nav { padding: 20px 0; }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #fff; }
-    .logo span { color: #ff4444; }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { text-decoration: none; color: #aaa; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #ff4444; transition: width 0.3s; }
-    .nav-links a:hover { color: #ff4444; }
-    .nav-links a:hover::after { width: 100%; }
+    .logo { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 900; }
+    .logo span { background: linear-gradient(135deg, #ff6b6b, #ffd93d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { text-decoration: none; color: #aaaacc; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff !important; padding: 10px 28px; border-radius: 100px; font-weight: 700 !important; transition: transform 0.3s !important; }
+    .nav-cta:hover { transform: translateY(-3px) !important; color: #fff !important; }
 
-    .hero { padding: 100px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .hero-badge { display: inline-block; background: rgba(255,68,68,0.12); color: #ff4444; padding: 6px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-    .hero h1 { font-family: 'Oswald', sans-serif; font-size: 4rem; line-height: 1.1; text-transform: uppercase; margin-bottom: 20px; }
-    .hero h1 span { color: #ff4444; }
-    .hero p { color: #aaa; line-height: 1.7; margin-bottom: 24px; font-size: 1.05rem; }
-    .btn { display: inline-block; padding: 14px 32px; border-radius: 4px; font-weight: 600; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: all 0.3s; }
-    .btn-primary { background: #ff4444; color: #fff; }
-    .btn-primary:hover { background: #cc3333; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,68,68,0.25); }
-    .btn-outline { border: 2px solid #333; color: #fff; margin-left: 12px; }
-    .btn-outline:hover { border-color: #ff4444; color: #ff4444; transform: translateY(-3px); }
+    .hero { padding: 100px 0 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,107,107,0.08), transparent 60%); border-radius: 50%; }
+    .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,217,61,0.06), transparent 60%); border-radius: 50%; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'Inter', sans-serif; font-size: 3.5rem; font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px; }
+    .hero h1 .highlight { background: linear-gradient(135deg, #ff6b6b, #ffd93d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { color: #8888aa; line-height: 1.7; font-size: 1.05rem; margin-bottom: 32px; max-width: 480px; }
+    .hero-buttons { display: flex; gap: 16px; }
+    .btn-primary { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff; padding: 16px 36px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; display: inline-block; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,107,107,0.3); }
+    .btn-secondary { background: transparent; color: #fff; padding: 16px 36px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 2px solid rgba(255,255,255,0.15); transition: all 0.3s; }
+    .btn-secondary:hover { border-color: #ff6b6b; }
+    .hero-visual { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 60px 40px; text-align: center; min-height: 340px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .hero-visual .big-text { font-size: 5rem; font-weight: 900; line-height: 1; background: linear-gradient(135deg, #ff6b6b, #ffd93d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: glow 3s ease-in-out infinite; }
+    .hero-visual p { color: #666688; margin-top: 12px; font-size: 0.9rem; }
 
-    /* Hero image with real gym photo */
-    .hero-img {
-      position: relative;
-      border-radius: 8px;
-      height: 440px;
-      overflow: hidden;
-      background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80') center/cover no-repeat;
-      border: 1px solid #333;
-    }
-    .hero-img::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
-    }
-    .gym-badge-overlay {
-      position: absolute;
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
-      z-index: 2;
-      text-align: center;
-    }
-    .gym-badge-overlay .icon { font-size: 3.5rem; animation: neonPulse 2s ease-in-out infinite; display: block; margin-bottom: 8px; }
-    .gym-badge-overlay .text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: #fff; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
+    /* Features */
+    .section { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header h2 { font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; }
+    .section-header p { color: #8888aa; max-width: 500px; margin: 0 auto; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feature-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 40px 28px; transition: all 0.4s; position: relative; overflow: hidden; }
+    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #ff6b6b, #ffd93d); opacity: 0; transition: opacity 0.4s; }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.06); }
+    .feature-card .icon { font-size: 2.4rem; margin-bottom: 20px; }
+    .feature-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.9rem; color: #8888aa; line-height: 1.6; }
 
-    /* Trust badges (gym style) */
-    .trust-badges { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
-    .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: #111; padding: 8px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 500; color: #ccc; border: 1px solid #222; }
-    .trust-badge span { font-size: 1rem; }
+    /* CTA Strip */
+    .cta-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; overflow: hidden; }
+    .cta-strip div { padding: 40px 32px; text-align: center; }
+    .cta-strip div:nth-child(2) { border-left: 1px solid rgba(255,255,255,0.06); border-right: 1px solid rgba(255,255,255,0.06); }
+    .cta-strip h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #ff6b6b; margin-bottom: 8px; }
+    .cta-strip p { color: #8888aa; font-size: 0.9rem; }
 
-    .classes { padding: 100px 0; text-align: center; }
-    .classes h2 { font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 12px; }
-    .classes > p { color: #aaa; max-width: 550px; margin: 0 auto 48px; }
-    .class-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .class-card { background: #111; border: 1px solid #222; padding: 32px 24px; border-radius: 8px; transition: all 0.3s; }
-    .class-card:hover { border-color: #ff4444; transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
-    .class-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; margin-bottom: 8px; }
-    .class-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
+    /* Style notes */
+    .style-notes { padding: 60px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .style-notes h3 { font-size: 1.6rem; margin-bottom: 16px; }
+    .style-tags { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .style-tags span { background: rgba(255,255,255,0.05); padding: 8px 20px; border-radius: 100px; font-size: 0.85rem; color: #ffd93d; border: 1px solid rgba(255,255,255,0.08); font-weight: 500; }
 
-    .cta { padding: 80px 0; text-align: center; background: linear-gradient(135deg, #111, #1a0000); border-radius: 8px; margin: 40px auto; border: 1px solid #222; }
-    .cta h2 { font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 12px; }
-    .cta p { color: #aaa; margin-bottom: 24px; }
-    .cta .btn { animation: pulseGlow 2.5s ease-in-out infinite; }
+    .cta-final { text-align: center; padding: 100px 0; position: relative; }
+    .cta-final h2 { font-family: 'Inter', sans-serif; font-size: 3rem; font-weight: 900; max-width: 600px; margin: 0 auto 20px; }
+    .cta-final p { color: #8888aa; margin-bottom: 32px; }
 
-    footer { text-align: center; padding: 32px 0; color: #555; font-size: 0.85rem; }
-    footer a { color: #ff4444; text-decoration: none; }
+    footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0; text-align: center; font-size: 0.85rem; color: #666688; }
 
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; padding: 60px 0; }
-      .hero h1 { font-size: 2.5rem; }
-      .class-grid { grid-template-columns: 1fr; }
-      .hero-img { height: 280px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .features-grid, .cta-strip { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.4rem; }
     }
   </style>
 </head>
-<body>
+<body class="gradient-bg">
   <div class="template-bar">
-    📐 Template Concept — Want a site like this for your gym?
-    <a href="../#contact">Get yours built →</a>
+    📐 Design Style Demo — <a href="../">Back to NovaDesignLab Portfolio</a>
   </div>
 
   <nav>
     <div class="container nav-inner">
-      <div class="logo">Iron <span>Haven</span></div>
+      <div class="logo">Your<span>Brand</span></div>
       <div class="nav-links">
-        <a href="../">Home</a>
-        <a href="#">Classes</a>
-        <a href="#">Trainers</a>
-        <a href="#">Visit Us</a>
-        <a href="../#contact">Contact</a>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Work</a>
+        <a href="#">Contact</a>
+        <a href="../#contact" class="nav-cta">Get This Style</a>
       </div>
     </div>
   </nav>
 
-  <div class="container">
-    <section class="hero">
-      <div>
-        <div class="hero-badge anim-fade-up">⚡ New Member Special — 50% Off First Month</div>
-        <h1 class="anim-fade-up-d1">Forge Your<br><span>Strongest</span> Self</h1>
-        <p class="anim-fade-up-d2">State-of-the-art equipment, expert trainers, and a community that pushes you to be better every single day. No judgment. Just results.</p>
-        <div class="anim-fade-up-d3">
-          <a href="../#contact" class="btn btn-primary">Start Your Gym Website →</a>
-          <a href="../#contact" class="btn btn-outline">Get a Quote</a>
-        </div>
-        <div class="trust-badges anim-fade-up-d3" style="animation-delay: 0.6s;">
-          <div class="trust-badge"><span>⭐</span> Custom Designed</div>
-          <div class="trust-badge"><span>📱</span> Mobile Optimised</div>
-          <div class="trust-badge"><span>⚡</span> Fast Loading</div>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="anim-hero">
+        <div class="style-badge"><span>🔥</span> Style: Bold & Vibrant</div>
+        <h1>Stand Out.<br><span class="highlight">Make an Impact.</span></h1>
+        <p>A high-energy, attention-grabbing design with vibrant gradients, oversized typography, and bold color blocks. Built for brands that want to be remembered.</p>
+        <div class="hero-buttons">
+          <a href="../#contact" class="btn-primary">Get This Style</a>
+          <a href="#features" class="btn-secondary">See Details</a>
         </div>
       </div>
-      <div class="hero-img anim-fade-up" style="animation-delay: 0.2s;">
-        <div class="gym-badge-overlay">
-          <span class="icon">💪</span>
-          <span class="text">Iron Haven</span>
-        </div>
+      <div class="hero-visual anim-hero-d1">
+        <div class="big-text">BOLD</div>
+        <p>High-impact visual hierarchy</p>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <section class="classes" style="background: #0a0a0a;">
+  <section id="features" class="section">
     <div class="container">
-      <h2 class="reveal">Our Classes</h2>
-      <p class="reveal">From strength training to high-intensity cardio — there's something for every fitness level.</p>
-      <div class="class-grid">
-        <div class="class-card reveal">
-          <h3>🏋️ Powerlifting</h3>
-          <p>Build raw strength with compound lifts. Coached technique, progressive overload, and personalized programming.</p>
+      <div class="section-header anim-reveal">
+        <h2>Design Features</h2>
+        <p>Attention-grabbing elements that make your brand unforgettable.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card anim-reveal">
+          <div class="icon">🎯</div>
+          <h3>Oversized Typography</h3>
+          <p>Huge, impactful headlines with tight letter-spacing create immediate visual hierarchy and drama.</p>
         </div>
-        <div class="class-card reveal">
-          <h3>🔥 HIIT</h3>
-          <p>High-intensity interval training to torch calories and build endurance. 45 minutes. Maximum results.</p>
+        <div class="feature-card anim-reveal">
+          <div class="icon">🌈</div>
+          <h3>Vibrant Gradients</h3>
+          <p>Custom gradient overlays and color shifts add energy and depth. Pairs well with dark backgrounds.</p>
         </div>
-        <div class="class-card reveal">
-          <h3>🧘 Recovery & Mobility</h3>
-          <p>Stretch, roll, and recover. Essential for injury prevention and long-term progress.</p>
+        <div class="feature-card anim-reveal">
+          <div class="icon">⚡</div>
+          <h3>Dynamic Animations</h3>
+          <p>Subtle glow effects, background motion, and hover transitions create a premium interactive feel.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <section class="cta reveal">
-      <h2>Want a Website Like This?</h2>
-      <p>This is a concept template for gyms and fitness centers. We can build a custom version for your business.</p>
-      <a href="../#contact" class="btn btn-primary">Get This Website for Your Gym →</a>
-    </section>
-  </div>
+  <section class="section">
+    <div class="container anim-reveal">
+      <div class="cta-strip">
+        <div>
+          <h3>Social Proof</h3>
+          <p>💬 "Bold design that actually converts — our enquiries doubled."</p>
+        </div>
+        <div>
+          <h3>Engagement</h3>
+          <p>⬆ 2.4× longer time on page vs traditional layouts.</p>
+        </div>
+        <div>
+          <h3>Recognition</h3>
+          <p>🏆 94% of visitors recall bold-branded sites.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="style-notes">
+    <div class="container anim-reveal">
+      <h3>💡 When to use this style</h3>
+      <p style="color:#8888aa; max-width: 600px; margin: 0 auto;">Ideal for creative agencies, gyms & fitness brands, entertainment, nightlife, and any business that wants to project energy and confidence.</p>
+      <div class="style-tags">
+        <span>Creative Agency</span>
+        <span>Fitness</span>
+        <span>Entertainment</span>
+        <span>Startups</span>
+        <span>Fashion</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="container">
+      <h2>Ready to Stand Out?</h2>
+      <p style="color:#8888aa;">I'll build a bold, conversion-focused website that gets your brand noticed.</p>
+      <a href="../#contact" class="btn-primary">Start Your Project →</a>
+    </div>
+  </section>
 
   <footer>
-    <p>📐 Template Concept &mdash; Built by <a href="https://novadesignlab.netlify.app">NovaDesignLab</a></p>
+    <div class="container">
+      <p>📐 Design Demo by <a href="../" style="color:#ff6b6b; text-decoration: none; font-weight: 600;">NovaDesignLab</a> — Cardiff Web Designer</p>
+    </div>
   </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.anim-reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
