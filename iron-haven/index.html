@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Haven Gym — Gym Website Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #fff; background: #0a0a0a; overflow-x: hidden; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Template Bar */
+    .template-bar { background: #ff4444; color: #fff; text-align: center; padding: 10px 16px; font-size: 0.8rem; font-weight: 600; }
+    .template-bar a { color: #fff; text-decoration: underline; font-weight: 700; }
+
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,68,68,0.4); } 50% { box-shadow: 0 0 0 20px rgba(255,68,68,0); } }
+    @keyframes neonPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+    .anim-fade-up { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+    .anim-fade-up-d1 { opacity: 0; animation: fadeInUp 0.8s ease 0.15s forwards; }
+    .anim-fade-up-d2 { opacity: 0; animation: fadeInUp 0.8s ease 0.3s forwards; }
+    .anim-fade-up-d3 { opacity: 0; animation: fadeInUp 0.8s ease 0.45s forwards; }
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    nav { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.06); animation: fadeInDown 0.6s ease; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #fff; }
+    .logo span { color: #ff4444; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { text-decoration: none; color: #aaa; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #ff4444; transition: width 0.3s; }
+    .nav-links a:hover { color: #ff4444; }
+    .nav-links a:hover::after { width: 100%; }
+
+    .hero { padding: 100px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-badge { display: inline-block; background: rgba(255,68,68,0.12); color: #ff4444; padding: 6px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Oswald', sans-serif; font-size: 4rem; line-height: 1.1; text-transform: uppercase; margin-bottom: 20px; }
+    .hero h1 span { color: #ff4444; }
+    .hero p { color: #aaa; line-height: 1.7; margin-bottom: 24px; font-size: 1.05rem; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 4px; font-weight: 600; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: all 0.3s; }
+    .btn-primary { background: #ff4444; color: #fff; }
+    .btn-primary:hover { background: #cc3333; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,68,68,0.25); }
+    .btn-outline { border: 2px solid #333; color: #fff; margin-left: 12px; }
+    .btn-outline:hover { border-color: #ff4444; color: #ff4444; transform: translateY(-3px); }
+
+    /* Hero image with real gym photo */
+    .hero-img {
+      position: relative;
+      border-radius: 8px;
+      height: 440px;
+      overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80') center/cover no-repeat;
+      border: 1px solid #333;
+    }
+    .hero-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .gym-badge-overlay {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 2;
+      text-align: center;
+    }
+    .gym-badge-overlay .icon { font-size: 3.5rem; animation: neonPulse 2s ease-in-out infinite; display: block; margin-bottom: 8px; }
+    .gym-badge-overlay .text { font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: #fff; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
+
+    /* Trust badges (gym style) */
+    .trust-badges { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: #111; padding: 8px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 500; color: #ccc; border: 1px solid #222; }
+    .trust-badge span { font-size: 1rem; }
+
+    .classes { padding: 100px 0; text-align: center; }
+    .classes h2 { font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 12px; }
+    .classes > p { color: #aaa; max-width: 550px; margin: 0 auto 48px; }
+    .class-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .class-card { background: #111; border: 1px solid #222; padding: 32px 24px; border-radius: 8px; transition: all 0.3s; }
+    .class-card:hover { border-color: #ff4444; transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+    .class-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; margin-bottom: 8px; }
+    .class-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
+
+    .cta { padding: 80px 0; text-align: center; background: linear-gradient(135deg, #111, #1a0000); border-radius: 8px; margin: 40px auto; border: 1px solid #222; }
+    .cta h2 { font-family: 'Oswald', sans-serif; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 12px; }
+    .cta p { color: #aaa; margin-bottom: 24px; }
+    .cta .btn { animation: pulseGlow 2.5s ease-in-out infinite; }
+
+    footer { text-align: center; padding: 32px 0; color: #555; font-size: 0.85rem; }
+    footer a { color: #ff4444; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 60px 0; }
+      .hero h1 { font-size: 2.5rem; }
+      .class-grid { grid-template-columns: 1fr; }
+      .hero-img { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="template-bar">
+    📐 Template Concept — Want a site like this for your gym?
+    <a href="../#contact">Get yours built →</a>
+  </div>
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">Iron <span>Haven</span></div>
+      <div class="nav-links">
+        <a href="../">Home</a>
+        <a href="#">Classes</a>
+        <a href="#">Trainers</a>
+        <a href="#">Visit Us</a>
+        <a href="../#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="hero">
+      <div>
+        <div class="hero-badge anim-fade-up">⚡ New Member Special — 50% Off First Month</div>
+        <h1 class="anim-fade-up-d1">Forge Your<br><span>Strongest</span> Self</h1>
+        <p class="anim-fade-up-d2">State-of-the-art equipment, expert trainers, and a community that pushes you to be better every single day. No judgment. Just results.</p>
+        <div class="anim-fade-up-d3">
+          <a href="../#contact" class="btn btn-primary">Start Your Gym Website →</a>
+          <a href="../#contact" class="btn btn-outline">Get a Quote</a>
+        </div>
+        <div class="trust-badges anim-fade-up-d3" style="animation-delay: 0.6s;">
+          <div class="trust-badge"><span>⭐</span> Custom Designed</div>
+          <div class="trust-badge"><span>📱</span> Mobile Optimised</div>
+          <div class="trust-badge"><span>⚡</span> Fast Loading</div>
+        </div>
+      </div>
+      <div class="hero-img anim-fade-up" style="animation-delay: 0.2s;">
+        <div class="gym-badge-overlay">
+          <span class="icon">💪</span>
+          <span class="text">Iron Haven</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="classes" style="background: #0a0a0a;">
+    <div class="container">
+      <h2 class="reveal">Our Classes</h2>
+      <p class="reveal">From strength training to high-intensity cardio — there's something for every fitness level.</p>
+      <div class="class-grid">
+        <div class="class-card reveal">
+          <h3>🏋️ Powerlifting</h3>
+          <p>Build raw strength with compound lifts. Coached technique, progressive overload, and personalized programming.</p>
+        </div>
+        <div class="class-card reveal">
+          <h3>🔥 HIIT</h3>
+          <p>High-intensity interval training to torch calories and build endurance. 45 minutes. Maximum results.</p>
+        </div>
+        <div class="class-card reveal">
+          <h3>🧘 Recovery & Mobility</h3>
+          <p>Stretch, roll, and recover. Essential for injury prevention and long-term progress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="cta reveal">
+      <h2>Want a Website Like This?</h2>
+      <p>This is a concept template for gyms and fitness centers. We can build a custom version for your business.</p>
+      <a href="../#contact" class="btn btn-primary">Get This Website for Your Gym →</a>
+    </section>
+  </div>
+
+  <footer>
+    <p>📐 Template Concept &mdash; Built by <a href="https://novadesignlab.netlify.app">NovaDesignLab</a></p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

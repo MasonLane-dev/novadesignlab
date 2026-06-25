@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iron Haven — Case Study | NovaDesignLab</title>
+  <meta name="description" content="Case study: A bold, high-energy gym website built to convert visitors into members for Iron Haven in Cardiff." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .cs-hero {
+      padding: 140px 0 60px;
+      background: linear-gradient(135deg, #0f0c29 0%, #1a1740 50%, #24243e 100%);
+      position: relative; overflow: hidden; color: #fff;
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,99,255,0.10) 0%, transparent 70%);
+    }
+    .cs-breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+    .cs-breadcrumb a { color: #8f88ff; text-decoration: none; }
+    .cs-breadcrumb a:hover { text-decoration: underline; }
+    .cs-category {
+      display: inline-block; font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: #8f88ff;
+      background: rgba(108,99,255,0.15);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .cs-hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; color: #fff; }
+    .cs-hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 680px; line-height: 1.7; }
+    .cs-hero-meta { display: flex; flex-wrap: wrap; gap: 24px; margin: 28px 0 0; }
+    .cs-hero-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .cs-hero-meta-item strong { color: #fff; font-weight: 600; }
+
+    .cs-body { padding: 60px 0 80px; background: #fff; }
+    .cs-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; }
+    .cs-content h2 { font-size: 1.5rem; margin: 48px 0 16px; padding-top: 8px; }
+    .cs-content h2:first-child { margin-top: 0; }
+    .cs-content h3 { font-size: 1.1rem; margin: 24px 0 8px; }
+    .cs-content p { font-size: 0.95rem; color: #4a4a5e; line-height: 1.8; margin-bottom: 16px; }
+    .cs-content ul { margin: 0 0 20px; padding-left: 20px; }
+    .cs-content li { font-size: 0.95rem; color: #4a4a5e; line-height: 1.7; margin-bottom: 6px; list-style: disc; }
+    .cs-content li strong { color: #0f0f1a; }
+
+    .cs-highlight {
+      background: linear-gradient(135deg, #f0eeff, #f8f7ff);
+      border-left: 4px solid #6c63ff;
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px; margin: 24px 0;
+    }
+    .cs-highlight p { margin-bottom: 0; font-size: 0.95rem; }
+
+    .cs-sidebar { position: sticky; top: 100px; align-self: start; }
+    .cs-sidebar-card {
+      background: #f8f7ff; border-radius: 12px; padding: 28px;
+      margin-bottom: 24px; border: 1px solid #f0f0f5;
+    }
+    .cs-sidebar-card h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8a8a9e; margin-bottom: 12px; }
+    .cs-sidebar-card .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f5; font-size: 0.85rem; }
+    .cs-sidebar-card .info-row:last-child { border-bottom: none; }
+    .cs-sidebar-card .info-label { color: #8a8a9e; }
+    .cs-sidebar-card .info-value { font-weight: 600; color: #0f0f1a; }
+
+    .cs-sidebar-cta {
+      background: #6c63ff; color: #fff; display: block;
+      padding: 14px 24px; border-radius: 10px; text-align: center;
+      font-weight: 600; font-size: 0.95rem; transition: background 0.3s, transform 0.25s;
+    }
+    .cs-sidebar-cta:hover { background: #5a52e0; transform: translateY(-2px); }
+    .cs-sidebar-demo {
+      display: block; padding: 14px 24px; border-radius: 10px;
+      text-align: center; font-weight: 600; font-size: 0.95rem;
+      border: 2px solid #e0e0e8; color: #0f0f1a; margin-top: 12px; transition: border-color 0.3s;
+    }
+    .cs-sidebar-demo:hover { border-color: #6c63ff; }
+
+    .cs-features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin: 20px 0;
+    }
+    .cs-feature-item { background: #f8f7ff; border-radius: 10px; padding: 20px; text-align: center; }
+    .cs-feature-item .icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .cs-feature-item h4 { font-size: 0.9rem; margin-bottom: 4px; }
+    .cs-feature-item p { font-size: 0.8rem; color: #8a8a9e; margin: 0; }
+
+    .cs-nav-links {
+      display: flex; justify-content: space-between;
+      padding: 40px 0 0; border-top: 1px solid #f0f0f5; margin-top: 60px;
+    }
+    .cs-nav-link { display: flex; align-items: center; gap: 8px; color: #6c63ff; font-weight: 600; font-size: 0.9rem; }
+    .cs-nav-link:hover { gap: 12px; }
+    .cs-nav-link.right { flex-direction: row-reverse; }
+
+    @media (max-width: 900px) { .cs-layout { grid-template-columns: 1fr; } .cs-sidebar { position: static; } }
+    @media (max-width: 768px) { .cs-hero { padding: 100px 0 40px; } }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo"><span class="logo-icon">🪐</span> Nova<span>DesignLab</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="index.html">Case Studies</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="cs-hero">
+    <div class="container">
+      <p class="cs-breadcrumb"><a href="index.html">← Case Studies</a></p>
+      <span class="cs-category">Fitness / Gym</span>
+      <h1>Iron Haven — Gym Website</h1>
+      <p class="cs-hero-sub">A bold, high-energy website designed to capture the intensity of Iron Haven's brand — with class scheduling, membership tiers, and trainer profiles built to convert visitors into members.</p>
+      <div class="cs-hero-meta">
+        <span class="cs-hero-meta-item"><strong>Client:</strong> Iron Haven (Concept Project)</span>
+        <span class="cs-hero-meta-item"><strong>Timeline:</strong> 3 weeks</span>
+        <span class="cs-hero-meta-item"><strong>Role:</strong> Design & Development</span>
+        <span class="cs-hero-meta-item"><strong>Category:</strong> Gym & Fitness</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="cs-body">
+    <div class="container">
+      <div class="cs-layout">
+        <div class="cs-content">
+
+          <h2>Overview</h2>
+          <p>Iron Haven is a concept gym brand built around strength, community, and relentless progress. The brief was to create a website that feels as intense and motivating as the gym itself — a digital presence that drives membership sign-ups and builds a sense of community before a visitor even steps through the door.</p>
+
+          <h2>The Problem</h2>
+          <p>Gym websites often fall into one of two traps: either they're overly corporate and sterile, or they're cluttered and hard to navigate. Iron Haven needed a site that hit a sweet spot — high-energy and motivating, but also clean and easy to use. Specific challenges included:</p>
+          <ul>
+            <li><strong>Conveying atmosphere digitally</strong> — gym energy doesn't translate well to a static page. The design needed motion, bold typography, and a dark, powerful aesthetic.</li>
+            <li><strong>Complex information architecture</strong> — class timetables, membership tiers, trainer profiles, and facility descriptions all needed to coexist without overwhelming the user.</li>
+            <li><strong>Mobile booking</strong> — most gym sign-ups happen on phones. The entire booking and membership flow had to be mobile-first.</li>
+          </ul>
+
+          <h2>The Solution</h2>
+          <p>I built Iron Haven around a dark, premium aesthetic — deep navy and purple gradients for the background, bold white typography for contrast, and accent colours that draw the eye to key actions like "Join Now" and "Book a Class."</p>
+
+          <p>The design is structured around the gym's three core audience segments:</p>
+          <ul>
+            <li><strong>Newcomers</strong> — a welcoming hero section with a prominent free trial CTA, backed by testimonial social proof.</li>
+            <li><strong>Existing members</strong> — a clear class timetable and booking flow, with trainer profiles to help members connect with coaches.</li>
+            <li><strong>Decision-makers</strong> — a transparent pricing table with three membership tiers, making it easy to compare and choose.</li>
+          </ul>
+
+          <p>Key design choices included staggered scroll-triggered animations (fade-up with delays) that make sections feel dynamic without being distracting, and a consistent purple highlight colour that ties the brand together across all pages.</p>
+
+          <div class="cs-highlight">
+            <p><strong>Key design decision:</strong> I chose a dark colour scheme — unusual for conversion-focused sites — because it aligns with the gym's brand identity: intense, focused, and premium. We offset the darkness with bright accent colours on CTAs and imagery, so the action points still pop.</p>
+          </div>
+
+          <h2>Key Features</h2>
+          <div class="cs-features">
+            <div class="cs-feature-item">
+              <div class="icon">💪</div>
+              <h4>Dynamic Hero</h4>
+              <p>Bold headline, stats counter, and dual CTAs for trial & membership</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">📅</div>
+              <h4>Class Timetable</h4>
+              <p>Visual schedule with class types, times, and trainer assignments</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">🏷️</div>
+              <h4>Pricing Tiers</h4>
+              <p>Three membership levels with clear feature comparison</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">👨‍🏫</div>
+              <h4>Trainer Cards</h4>
+              <p>Trainer profiles with specialities, bios, and social links</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">📱</div>
+              <h4>Mobile Booking</h4>
+              <p>Full booking flow optimised for phone screens</p>
+            </div>
+            <div class="cs-feature-item">
+              <div class="icon">⚡</div>
+              <h4>Scroll Animations</h4>
+              <p>Staggered fade-in animations for a dynamic feel</p>
+            </div>
+          </div>
+
+          <h2>Tech Stack</h2>
+          <ul>
+            <li><strong>HTML5</strong> — semantic structure with accessible markup</li>
+            <li><strong>CSS3</strong> — custom gradients, flexbox/grid layout, CSS keyframe animations</li>
+            <li><strong>JavaScript</strong> — class timetable tabs, mobile booking modal, scroll reveal</li>
+            <li><strong>Google Fonts</strong> — Inter for clean, modern typography</li>
+            <li><strong>Font Awesome</strong> — icon library for feature indicators and social proofs</li>
+          </ul>
+          <p>Everything is vanilla — no build tools, no framework, no unnecessary dependencies. Fast load times and easy customisation are baked into the approach.</p>
+
+          <h2>Results</h2>
+          <p>As a concept template, Iron Haven demonstrates how a gym can establish a strong digital presence that works hard to convert visitors:</p>
+          <ul>
+            <li><strong>Strong brand identity</strong> — the dark, premium aesthetic positions Iron Haven as a serious training facility from the first glance.</li>
+            <li><strong>Clear conversion funnel</strong> — every page pushes visitors toward either a free trial sign-up, a class booking, or a membership purchase.</li>
+            <li><strong>Community feel</strong> — trainer profiles and testimonials humanise the brand and build trust before the first visit.</li>
+            <li><strong>Mobile-optimised</strong> — critical for gym-goers checking class times and booking on the go.</li>
+          </ul>
+
+          <div class="cs-highlight">
+            <p><strong>What I'd do differently for a real client:</strong> Integrate a real booking API (like Mindbody or Glofox), add member login functionality, and include a blog section for workout tips and gym updates. The template provides a solid marketing site foundation that can extend into a full member portal.</p>
+          </div>
+
+          <div class="cs-nav-links">
+            <a href="grind-coffee.html" class="cs-nav-link">← The Grind Coffee</a>
+            <a href="stag-blade.html" class="cs-nav-link right">Next: Stag & Blade →</a>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="cs-sidebar">
+          <div class="cs-sidebar-card">
+            <h4>Project Details</h4>
+            <div class="info-row"><span class="info-label">Client</span><span class="info-value">Iron Haven</span></div>
+            <div class="info-row"><span class="info-label">Category</span><span class="info-value">Gym / Fitness</span></div>
+            <div class="info-row"><span class="info-label">Timeline</span><span class="info-value">3 weeks</span></div>
+            <div class="info-row"><span class="info-label">Pages</span><span class="info-value">1-page + booking</span></div>
+            <div class="info-row"><span class="info-label">Tech</span><span class="info-value">HTML / CSS / JS</span></div>
+          </div>
+
+          <a href="../iron-haven/" target="_blank" class="cs-sidebar-cta">🌐 View Live Demo</a>
+          <a href="../index.html#contact" class="cs-sidebar-demo">Start a Similar Project →</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo"><span class="logo-icon">🪐</span> Nova<span>DesignLab</span></a>
+          <p>Cardiff-based freelance web designer building affordable, conversion-focused websites for local businesses.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="https://www.linkedin.com/in/masonlane-web" target="_blank" aria-label="LinkedIn">💼</a>
+            <a href="https://github.com/masonlane-nova" target="_blank" aria-label="GitHub">🐙</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <a href="../index.html#services">Web Design</a>
+          <a href="../index.html#pricing">Pricing</a>
+          <a href="../index.html#work">Portfolio</a>
+          <a href="index.html">Case Studies</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:Mason_08642@hotmail.com">Mason_08642@hotmail.com</a>
+          <a href="../index.html#contact">Get a Quote</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NovaDesignLab. Built with care in Cardiff.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function(){
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.getElementById('hamburger').addEventListener('click', function(){
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

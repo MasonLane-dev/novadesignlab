@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies — NovaDesignLab | Web Designer Cardiff</title>
+  <meta name="description" content="Detailed case studies of web design projects by NovaDesignLab. See how I approach design problems for Cardiff businesses." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* Case Studies Listing Page */
+    .case-studies-hero {
+      padding: 140px 0 80px;
+      background: linear-gradient(135deg, #f8f7ff, #ffffff);
+      text-align: center;
+    }
+    .case-hero-meta {
+      font-size: 0.9rem;
+      color: #6c63ff;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+    .case-hero-meta span { margin: 0 8px; color: #ccc; }
+
+    /* Filters */
+    .filters { text-align: center; margin-bottom: 48px; }
+    .filter-btn {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: transparent;
+      border: 1px solid #e0e0e8;
+      cursor: pointer;
+      margin: 4px;
+      transition: all 0.25s;
+      color: #5a5a6e;
+    }
+    .filter-btn:hover, .filter-btn.active { background: #6c63ff; color: #fff; border-color: #6c63ff; }
+
+    /* Case Study Cards */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      padding-bottom: 80px;
+    }
+    .case-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #f0f0f5;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .case-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(108,99,255,0.10); }
+    .case-card-image {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+    }
+    .case-card-body { padding: 28px; }
+    .case-card-category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6c63ff;
+      margin-bottom: 8px;
+    }
+    .case-card-body h3 { font-size: 1.25rem; margin-bottom: 12px; }
+    .case-card-body p { font-size: 0.9rem; color: #5a5a6e; line-height: 1.7; margin-bottom: 16px; }
+    .case-card-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: #8a8a9e;
+      margin-bottom: 20px;
+    }
+    .case-card-meta span { display: flex; align-items: center; gap: 4px; }
+    .case-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #6c63ff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: gap 0.25s;
+    }
+    .case-card-link:hover { gap: 12px; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #5a5a6e;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 60px;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: #6c63ff; }
+
+    @media (max-width: 768px) {
+      .case-grid { grid-template-columns: 1fr; }
+      .case-studies-hero { padding: 100px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">🪐</span>
+        Nova<span>DesignLab</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="index.html" style="color:#6c63ff; font-weight:600;">Case Studies</a></li>
+        <li><a href="../index.html#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="case-studies-hero">
+    <div class="container">
+      <span class="section-label">Portfolio Deep Dives</span>
+      <h1>Case Studies</h1>
+      <p class="section-sub">A closer look at recent projects — the thinking, the process, and the results behind each design.</p>
+      <p class="case-hero-meta">4 Projects <span>·</span> Cardiff & Surrounding Areas <span>·</span> 2024–2026</p>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section>
+    <div class="container">
+      <div class="case-grid">
+
+        <!-- Grind Coffee -->
+        <div class="case-card">
+          <div class="case-card-image" style="background:linear-gradient(135deg, #c471ed, #f64f59);">
+            The Grind Coffee
+          </div>
+          <div class="case-card-body">
+            <div class="case-card-category">Cafe / Local Business</div>
+            <h3>The Grind Coffee — Cafe Website</h3>
+            <p>Warm, inviting brand with online menu, store locator, and subscription plans. Built to drive foot traffic and online orders.</p>
+            <div class="case-card-meta">
+              <span>🕐 2 weeks</span>
+              <span>📱 Mobile-first</span>
+            </div>
+            <a href="grind-coffee.html" class="case-card-link">Read Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Iron Haven -->
+        <div class="case-card">
+          <div class="case-card-image" style="background:linear-gradient(135deg, #0f0c29, #302b63, #24243e);">
+            Iron Haven Gym
+          </div>
+          <div class="case-card-body">
+            <div class="case-card-category">Fitness / Gym</div>
+            <h3>Iron Haven — Gym & Fitness Website</h3>
+            <p>Bold, high-energy design with class scheduling, membership tiers, and trainer profiles to convert visitors into members.</p>
+            <div class="case-card-meta">
+              <span>🕐 3 weeks</span>
+              <span>📱 Mobile-first</span>
+            </div>
+            <a href="iron-haven.html" class="case-card-link">Read Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Stag & Blade -->
+        <div class="case-card">
+          <div class="case-card-image" style="background:linear-gradient(135deg, #e2b04a, #c27b2b);">
+            Stag & Blade
+          </div>
+          <div class="case-card-body">
+            <div class="case-card-category">Barbershop / Services</div>
+            <h3>Stag & Blade — Barbershop Booking Website</h3>
+            <p>Premium service-provider site with online booking, service menu, staff profiles, and Instagram integration.</p>
+            <div class="case-card-meta">
+              <span>🕐 2.5 weeks</span>
+              <span>📱 Mobile-first</span>
+            </div>
+            <a href="stag-blade.html" class="case-card-link">Read Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Harbor Realty -->
+        <div class="case-card">
+          <div class="case-card-image" style="background:linear-gradient(135deg, #0d6b6b, #0a4a4a);">
+            Harbor Realty
+          </div>
+          <div class="case-card-body">
+            <div class="case-card-category">Real Estate</div>
+            <h3>Harbor Realty — Estate Agency Website</h3>
+            <p>Elegant realty site with property search, virtual tours, mortgage calculator, and agent directory.</p>
+            <div class="case-card-meta">
+              <span>🕐 3 weeks</span>
+              <span>📱 Mobile-first</span>
+            </div>
+            <a href="harbor-realty.html" class="case-card-link">Read Case Study →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; padding-bottom:80px;">
+        <a href="../index.html#contact" class="btn btn-primary">Start Your Project →</a>
+        <br>
+        <a href="../index.html" class="back-link">← Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <span class="logo-icon">🪐</span>
+            Nova<span>DesignLab</span>
+          </a>
+          <p>Cardiff-based freelance web designer building affordable, conversion-focused websites for local businesses.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="https://www.linkedin.com/in/masonlane-web" target="_blank" aria-label="LinkedIn">💼</a>
+            <a href="https://github.com/masonlane-nova" target="_blank" aria-label="GitHub">🐙</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <a href="../index.html#services">Web Design</a>
+          <a href="../index.html#pricing">Pricing</a>
+          <a href="../index.html#work">Portfolio</a>
+          <a href="index.html">Case Studies</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:Mason_08642@hotmail.com">Mason_08642@hotmail.com</a>
+          <a href="../index.html#contact">Get a Quote</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NovaDesignLab. Built with care in Cardiff.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav shadow
+    window.addEventListener('scroll', function(){
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger menu
+    document.getElementById('hamburger').addEventListener('click', function(){
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

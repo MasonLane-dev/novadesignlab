@@ -8,105 +8,155 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; color: #1a1410; background: #f5f0eb; }
+    body { font-family: 'Inter', sans-serif; color: #1a1410; background: #f5f0eb; overflow-x: hidden; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Template Bar */
     .template-bar { background: #1a1410; color: #d4c5b5; text-align: center; padding: 10px 16px; font-size: 0.8rem; font-weight: 500; }
     .template-bar a { color: #d4a76a; text-decoration: none; font-weight: 600; }
-    .template-bar a:hover { text-decoration: underline; }
-    nav { padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.06); background: #1a1410; }
+
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,167,106,0.4); } 50% { box-shadow: 0 0 0 16px rgba(212,167,106,0); } }
+    .anim-fade-up { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+    .anim-fade-up-d1 { opacity: 0; animation: fadeInUp 0.8s ease 0.15s forwards; }
+    .anim-fade-up-d2 { opacity: 0; animation: fadeInUp 0.8s ease 0.3s forwards; }
+    .anim-fade-up-d3 { opacity: 0; animation: fadeInUp 0.8s ease 0.45s forwards; }
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    nav { padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.06); background: #1a1410; animation: fadeInDown 0.6s ease; }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; }
     .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #d4a76a; }
     .logo span { color: #fff; }
     .nav-links { display: flex; gap: 28px; }
-    .nav-links a { text-decoration: none; color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a { text-decoration: none; color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 500; transition: color 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #d4a76a; transition: width 0.3s; }
     .nav-links a:hover { color: #d4a76a; }
-    .nav-cta { background: #d4a76a; color: #1a1410 !important; padding: 8px 20px; border-radius: 4px; font-weight: 600 !important; }
-    .nav-cta:hover { background: #c4965a !important; color: #1a1410 !important; }
+    .nav-links a:hover::after { width: 100%; }
+
     .hero { padding: 80px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .hero-badge { display: inline-block; background: rgba(212,167,106,0.15); color: #d4a76a; padding: 6px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 20px; }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.15; margin-bottom: 20px; }
     .hero h1 span { color: #d4a76a; }
-    .hero p { color: #5a4a3a; line-height: 1.7; margin-bottom: 32px; }
+    .hero p { color: #5a4a3a; line-height: 1.7; margin-bottom: 24px; }
     .btn { display: inline-block; padding: 14px 32px; border-radius: 4px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
     .btn-primary { background: #1a1410; color: #fff; }
-    .btn-primary:hover { background: #3a2c20; transform: translateY(-2px); }
+    .btn-primary:hover { background: #3a2c20; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,20,16,0.15); }
     .btn-outline { border: 2px solid #d4c5b5; color: #1a1410; margin-left: 12px; }
-    .btn-outline:hover { border-color: #d4a76a; color: #d4a76a; }
-    .hero-img { background: linear-gradient(135deg, #1a1410, #3a2c20); border-radius: 16px; height: 420px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+    .btn-outline:hover { border-color: #d4a76a; color: #d4a76a; transform: translateY(-3px); }
+
+    /* Hero image with real barbershop photo */
+    .hero-img {
+      position: relative;
+      border-radius: 16px;
+      height: 440px;
+      overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1599351431202-1e0f1e2a5a5d?w=600&q=80') center/cover no-repeat;
+    }
+    .hero-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(26,20,16,0.1) 0%, rgba(26,20,16,0.4) 100%);
+    }
+
+    /* Trust badges */
+    .trust-badges { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff; padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 500; color: #1a1410; border: 1px solid #e0d5c8; }
+    .trust-badge span { font-size: 1rem; }
+
     .services { padding: 80px 0; text-align: center; }
     .services h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 12px; }
     .services > p { color: #5a4a3a; max-width: 500px; margin: 0 auto 48px; }
     .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .service-card { background: #fff; border: 1px solid #e0d5c8; padding: 32px 24px; border-radius: 12px; transition: transform 0.3s; }
-    .service-card:hover { transform: translateY(-4px); }
+    .service-card { background: #fff; border: 1px solid #e0d5c8; padding: 32px 24px; border-radius: 12px; transition: all 0.3s; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(26,20,16,0.06); }
     .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 8px; }
     .service-card .price { color: #d4a76a; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; }
     .service-card p { color: #5a4a3a; font-size: 0.9rem; }
+
     .barbers { padding: 80px 0; background: #fff; text-align: center; }
     .barbers h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 48px; }
     .barber-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .barber { padding: 24px; background: #f5f0eb; border-radius: 12px; }
+    .barber { padding: 24px; background: #f5f0eb; border-radius: 12px; transition: transform 0.3s; }
+    .barber:hover { transform: translateY(-4px); }
     .barber .avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #d4a76a, #1a1410); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; font-weight: 700; }
     .barber h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
     .barber p { color: #888; font-size: 0.85rem; }
+
     .cta { padding: 60px; text-align: center; background: linear-gradient(135deg, #1a1410, #2a2018); border-radius: 16px; margin: 40px auto; color: #fff; }
     .cta h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 12px; }
     .cta p { color: rgba(255,255,255,0.6); margin-bottom: 24px; }
-    .cta .btn { background: #d4a76a; color: #1a1410; }
-    .cta .btn:hover { background: #c4965a; }
     .cta .btn-primary { background: #d4a76a; color: #1a1410; }
+    .cta .btn-primary:hover { background: #c4965a; }
+
     footer { text-align: center; padding: 32px 0; color: #8a7a6a; font-size: 0.85rem; }
     footer a { color: #d4a76a; text-decoration: none; }
+
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; }
       .service-grid, .barber-grid { grid-template-columns: 1fr; }
       .hero h1 { font-size: 2.2rem; }
+      .hero-img { height: 280px; }
     }
   </style>
 </head>
 <body>
   <div class="template-bar">
     📐 Template Concept — Want a site like this for your barbershop?
-    <a href="https://novadesignlab.netlify.app/#contact">Get yours built →</a>
+    <a href="../#contact">Get yours built →</a>
   </div>
+
   <nav>
     <div class="container nav-inner">
       <div class="logo">Stag <span>& Blade</span></div>
       <div class="nav-links">
-        <a href="https://novadesignlab.netlify.app/">Home</a>
-        <a href="https://novadesignlab.netlify.app/#services">Services</a>
-        <a href="https://novadesignlab.netlify.app/#contact" class="nav-cta">Get This Site</a>
+        <a href="../">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Our Team</a>
+        <a href="#">Visit Us</a>
+        <a href="../#contact">Contact</a>
       </div>
     </div>
   </nav>
+
   <div class="container">
     <section class="hero">
       <div>
-        <div class="hero-badge">✂️ Premium Cuts. Timeless Style.</div>
-        <h1>Where <span>Craftsmanship</span><br>Meets Style</h1>
-        <p>Traditional barbering with a modern edge. Hot towel shaves, precision cuts, and the finest grooming products.</p>
-        <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-primary">Get a Site Like This →</a>
-        <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-outline">Start Your Project</a>
+        <div class="hero-badge anim-fade-up">✂️ Premium Cuts. Timeless Style.</div>
+        <h1 class="anim-fade-up-d1">Where <span>Craftsmanship</span><br>Meets Style</h1>
+        <p class="anim-fade-up-d2">Traditional barbering with a modern edge. Hot towel shaves, precision cuts, and the finest grooming products. Walk in looking good, leave feeling elite.</p>
+        <div class="anim-fade-up-d3">
+          <a href="../#contact" class="btn btn-primary">Start Your Barbershop Website →</a>
+          <a href="../#contact" class="btn btn-outline">Get a Quote</a>
+        </div>
+        <div class="trust-badges anim-fade-up-d3" style="animation-delay: 0.6s;">
+          <div class="trust-badge"><span>⭐</span> Custom Designed</div>
+          <div class="trust-badge"><span>📱</span> Mobile Optimised</div>
+          <div class="trust-badge"><span>⚡</span> Fast Loading</div>
+        </div>
       </div>
-      <div class="hero-img">✂️</div>
+      <div class="hero-img anim-fade-up" style="animation-delay: 0.2s;"></div>
     </section>
   </div>
-  <section class="services">
+
+  <section class="services reveal">
     <div class="container">
       <h2>Our Services</h2>
       <p>From classic cuts to luxury grooming — we've got you covered.</p>
       <div class="service-grid">
-        <div class="service-card">
+        <div class="service-card reveal">
           <h3>Classic Haircut</h3>
           <div class="price">$35</div>
           <p>Precision scissor & clipper cut with hot towel finish. Includes wash and style.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card reveal">
           <h3>Hot Towel Shave</h3>
           <div class="price">$45</div>
           <p>Traditional straight razor shave with hot towels, pre-shave oil, and aftershave balm.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card reveal">
           <h3>Beard Grooming</h3>
           <div class="price">$25</div>
           <p>Shape, trim, and condition your beard. Hot towel and oil included.</p>
@@ -114,21 +164,22 @@
       </div>
     </div>
   </section>
-  <section class="barbers">
+
+  <section class="barbers reveal">
     <div class="container">
       <h2>Meet The Team</h2>
       <div class="barber-grid">
-        <div class="barber">
+        <div class="barber reveal">
           <div class="avatar">TW</div>
           <h4>Thomas Walker</h4>
           <p>Master Barber · 12 years</p>
         </div>
-        <div class="barber">
+        <div class="barber reveal">
           <div class="avatar">MJ</div>
           <h4>Marcus Jones</h4>
           <p>Senior Barber · 8 years</p>
         </div>
-        <div class="barber">
+        <div class="barber reveal">
           <div class="avatar">AL</div>
           <h4>Andre Lewis</h4>
           <p>Barber & Stylist · 5 years</p>
@@ -136,15 +187,26 @@
       </div>
     </div>
   </section>
+
   <div class="container">
-    <section class="cta">
+    <section class="cta reveal">
       <h2>Want a Website Like This?</h2>
       <p>This is a concept template for barbershops & salons. We can build a custom version for your business.</p>
-      <a href="https://novadesignlab.netlify.app/#contact" class="btn btn-primary">Get Your Site →</a>
+      <a href="../#contact" class="btn btn-primary">Get This Website for Your Barber Shop →</a>
     </section>
   </div>
+
   <footer>
     <p>📐 Template Concept &mdash; Built by <a href="https://novadesignlab.netlify.app">NovaDesignLab</a></p>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

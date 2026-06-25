@@ -1,236 +1,568 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harbor Realty — Real Estate Website Concept</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaDesignLab — Web Designer Cardiff | Freelance Web Developer</title>
+  <meta name="description" content="Cardiff-based freelance web designer specialising in affordable, conversion-focused websites for small businesses. Web design services in Cardiff starting from £299." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; color: #1a2a3a; background: #fff; overflow-x: hidden; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-    /* Template Bar */
-    .template-bar { background: #0d6b6b; color: #d0e8e8; text-align: center; padding: 10px 16px; font-size: 0.8rem; font-weight: 500; }
-    .template-bar a { color: #fff; text-decoration: none; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.3); }
-
-    /* Animations */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(13,107,107,0.4); } 50% { box-shadow: 0 0 0 20px rgba(13,107,107,0); } }
-    .anim-fade-up { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
-    .anim-fade-up-d1 { opacity: 0; animation: fadeInUp 0.8s ease 0.15s forwards; }
-    .anim-fade-up-d2 { opacity: 0; animation: fadeInUp 0.8s ease 0.3s forwards; }
-    .anim-fade-up-d3 { opacity: 0; animation: fadeInUp 0.8s ease 0.45s forwards; }
-    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    nav { padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.06); background: #fff; animation: fadeInDown 0.6s ease; }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #0d6b6b; }
-    .logo span { color: #1a2a3a; }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { text-decoration: none; color: #5a6a7a; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #0d6b6b; transition: width 0.3s; }
-    .nav-links a:hover { color: #0d6b6b; }
-    .nav-links a:hover::after { width: 100%; }
-
-    .hero { padding: 80px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .hero-badge { display: inline-block; background: rgba(13,107,107,0.08); color: #0d6b6b; padding: 6px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1.15; margin-bottom: 20px; }
-    .hero h1 span { color: #0d6b6b; }
-    .hero p { color: #5a6a7a; line-height: 1.7; margin-bottom: 24px; font-size: 1.05rem; }
-    .btn { display: inline-block; padding: 14px 32px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
-    .btn-primary { background: #0d6b6b; color: #fff; }
-    .btn-primary:hover { background: #095555; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(13,107,107,0.2); }
-    .btn-outline { border: 2px solid #d0d8e0; color: #1a2a3a; margin-left: 12px; }
-    .btn-outline:hover { border-color: #0d6b6b; color: #0d6b6b; transform: translateY(-3px); }
-
-    /* Hero image with real property photo */
-    .hero-img {
-      position: relative;
-      border-radius: 16px;
-      height: 440px;
-      overflow: hidden;
-      background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80') center/cover no-repeat;
-    }
-    .hero-img::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(13,107,107,0.1) 0%, rgba(13,107,107,0.3) 100%);
-    }
-
-    /* Trust badges */
-    .trust-badges { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
-    .trust-badge { display: inline-flex; align-items: center; gap: 6px; background: #f5fafa; padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 500; color: #1a2a3a; border: 1px solid #d0e8e8; }
-    .trust-badge span { font-size: 1rem; }
-
-    .search-section { padding: 60px 0; text-align: center; background: #f5fafa; }
-    .search-section h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 12px; }
-    .search-section p { color: #5a6a7a; margin-bottom: 24px; }
-    .search-bar { display: flex; max-width: 500px; margin: 0 auto; gap: 12px; }
-    .search-bar input { flex: 1; padding: 14px 20px; border: 2px solid #d0e8e8; border-radius: 8px; font-size: 1rem; }
-    .search-bar button { padding: 14px 28px; background: #0d6b6b; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
-    .search-bar button:hover { background: #095555; }
-
-    .listings { padding: 80px 0; }
-    .listings h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 40px; text-align: center; }
-    .property-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .property-card { border: 1px solid #e8eef0; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
-    .property-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(13,107,107,0.08); }
-    .property-img { height: 200px; background-size: cover; background-position: center; }
-    .property-info { padding: 24px; }
-    .property-info .type { color: #0d6b6b; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-    .property-info h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 4px 0; }
-    .property-info .price { font-size: 1.3rem; font-weight: 700; color: #0d6b6b; }
-    .property-info p { color: #5a6a7a; font-size: 0.9rem; margin: 8px 0; }
-    .property-info .specs { color: #8a9aaa; font-size: 0.85rem; }
-
-    .agents { padding: 80px 0; text-align: center; background: #f5fafa; }
-    .agents h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 40px; }
-    .agent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .agent-card { background: #fff; padding: 32px 24px; border-radius: 12px; border: 1px solid #e8eef0; transition: all 0.3s; }
-    .agent-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(13,107,107,0.06); }
-    .agent-card .avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, #0d6b6b, #0daaaa); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #fff; font-weight: 700; }
-    .agent-card h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
-    .agent-card p { color: #5a6a7a; font-size: 0.85rem; }
-
-    .cta { padding: 60px; text-align: center; background: linear-gradient(135deg, #0d6b6b, #0daaaa); border-radius: 16px; margin: 40px auto; color: #fff; }
-    .cta h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 12px; }
-    .cta p { opacity: 0.8; margin-bottom: 24px; }
-    .cta .btn-primary { background: #fff; color: #0d6b6b; animation: pulseGlow 2.5s ease-in-out infinite; }
-    .cta .btn-primary:hover { background: #f0f8f8; }
-
-    footer { text-align: center; padding: 32px 0; color: #8a9aaa; font-size: 0.85rem; }
-    footer a { color: #0d6b6b; text-decoration: none; }
-
-    @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; }
-      .property-grid, .agent-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.2rem; }
-      .hero-img { height: 280px; }
-      .search-bar { flex-direction: column; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="template-bar">
-    📐 Template Concept — Want a site like this for your realty business?
-    <a href="../#contact">Get yours built →</a>
-  </div>
 
-  <nav>
+  <!-- ========== NAV ========== -->
+  <nav id="navbar">
     <div class="container nav-inner">
-      <div class="logo">Harbor <span>Realty</span></div>
-      <div class="nav-links">
-        <a href="../">Home</a>
-        <a href="#">Listings</a>
-        <a href="#">Agents</a>
-        <a href="#">Contact</a>
-      </div>
+      <a href="#" class="logo">
+        <span class="logo-icon">🪐</span>
+        Nova<span>DesignLab</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="case-studies/index.html">Case Studies</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
     </div>
   </nav>
 
-  <div class="container">
-    <section class="hero">
-      <div>
-        <div class="hero-badge anim-fade-up">🏡 Your Dream Home Awaits</div>
-        <h1 class="anim-fade-up-d1">Find Your Perfect<br><span>Place to Call Home</span></h1>
-        <p class="anim-fade-up-d2">Expert guidance through every step of your real estate journey. From first-time buyers to seasoned investors — we're here to help you find the perfect property.</p>
-        <div class="anim-fade-up-d3">
-          <a href="../#contact" class="btn btn-primary">Start Your Real Estate Website →</a>
-          <a href="../#contact" class="btn btn-outline">Get a Quote</a>
+  <!-- ========== HERO ========== -->
+  <section id="hero">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for New Projects — Cardiff & Surrounding Areas
         </div>
-        <div class="trust-badges anim-fade-up-d3" style="animation-delay: 0.6s;">
-          <div class="trust-badge"><span>⭐</span> Custom Designed</div>
-          <div class="trust-badge"><span>📱</span> Mobile Optimised</div>
-          <div class="trust-badge"><span>⚡</span> Fast Loading</div>
+        <h1>Freelance Web Designer &mdash; <span class="gradient-text">Affordable</span> Websites for Cardiff Businesses</h1>
+        <p class="hero-sub">I build modern, mobile-friendly websites for independent businesses in Cardiff, Penarth, Newport and Barry. Specialising in small business websites that actually generate leads.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">
+            Start Your Project →
+          </a>
+          <a href="#work" class="btn btn-outline">View My Work</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-target="8">0</span><span class="stat-plus">+</span>
+            <p>Projects Delivered</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="5">0</span><span class="stat-plus">★</span>
+            <p>Client Reviews</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="2">0</span><span class="stat-plus">+</span>
+            <p>Years Building</p>
+          </div>
         </div>
       </div>
-      <div class="hero-img anim-fade-up" style="animation-delay: 0.2s;"></div>
-    </section>
-  </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="hero-card-content">
+            <div class="mock-row">
+              <div class="mock-avatar"></div>
+              <div class="mock-lines">
+                <div class="mock-line" style="width:100%"></div>
+                <div class="mock-line" style="width:60%"></div>
+              </div>
+            </div>
+            <div class="mock-hero">
+              <div class="mock-line mock-line-lg" style="width:85%"></div>
+              <div class="mock-line" style="width:55%"></div>
+            </div>
+            <div class="mock-cards">
+              <div class="mock-card-item"></div>
+              <div class="mock-card-item"></div>
+              <div class="mock-card-item"></div>
+            </div>
+          </div>
+          <div class="hero-card-float">
+            <span class="float-icon">⚡</span>
+            <div>
+              <strong>2.4×</strong> faster load times
+            </div>
+          </div>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <span style="background:#302b63">DC</span>
+            <span style="background:#c471ed">LR</span>
+            <span style="background:#43e97b">TW</span>
+          </div>
+          <p>Trusted by Cardiff businesses</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </section>
 
-  <section class="search-section reveal">
+  <!-- ========== SERVICES ========== -->
+  <section id="services">
     <div class="container">
-      <h2>Search Properties</h2>
-      <p>Find your dream home from our curated listings.</p>
-      <div class="search-bar">
-        <input type="text" placeholder="Search by city, neighbourhood, or ZIP...">
-        <button>🔍 Search</button>
+      <div class="section-header">
+        <span class="section-label">Services</span>
+        <h2>Everything You Need to Succeed Online</h2>
+        <p class="section-sub">From strategy to launch, I provide end-to-end web solutions tailored to your business goals.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon-wrap" style="background: rgba(108,99,255,0.08); color:#6c63ff;">🎨</div>
+          <h3>Web Design</h3>
+          <p>Custom, conversion-optimised designs that capture your brand's essence and guide visitors toward action.</p>
+          <ul class="service-features">
+            <li>✔ UI/UX Strategy</li>
+            <li>✔ Wireframing & Prototyping</li>
+            <li>✔ Responsive Design</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap" style="background: rgba(245,87,108,0.08); color:#f5576c;">⚡</div>
+          <h3>Development</h3>
+          <p>Blazing-fast, secure websites built with modern technology. Flawless performance on every device.</p>
+          <ul class="service-features">
+            <li>✔ Custom Development</li>
+            <li>✔ CMS Integration</li>
+            <li>✔ E-Commerce Solutions</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap" style="background: rgba(79,172,254,0.08); color:#4facfe;">📈</div>
+          <h3>SEO & Growth</h3>
+          <p>Built-in SEO best practices and performance optimization to help you rank higher and grow faster.</p>
+          <ul class="service-features">
+            <li>✔ On-Page SEO</li>
+            <li>✔ Speed Optimization</li>
+            <li>✔ Analytics Setup</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-wrap" style="background: rgba(67,233,123,0.08); color:#43e97b;">🛡️</div>
+          <h3>Maintenance</h3>
+          <p>Ongoing care, updates, and security monitoring so your website stays fast, fresh, and secure.</p>
+          <ul class="service-features">
+            <li>✔ Regular Updates</li>
+            <li>✔ Security Monitoring</li>
+            <li>✔ Priority Support</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="listings container reveal">
-    <h2>Featured Properties</h2>
-    <div class="property-grid">
-      <div class="property-card reveal">
-        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=60');"></div>
-        <div class="property-info">
-          <div class="type">Modern Villa</div>
-          <h3>124 Oceanview Drive</h3>
-          <div class="price">$625,000</div>
-          <p>Stunning 4-bed modern home with panoramic ocean views. Open-plan living, chef's kitchen, and private pool.</p>
-          <div class="specs">🛏️ 4 Beds &middot; 🛁 3 Baths &middot; 📐 2,400 sqft</div>
-        </div>
-      </div>
-      <div class="property-card reveal">
-        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=60');"></div>
-        <div class="property-info">
-          <div class="type">Charming Bungalow</div>
-          <h3>87 Maple Street</h3>
-          <div class="price">$389,000</div>
-          <p>Beautifully renovated 3-bed bungalow in family-friendly neighbourhood. Hardwood floors, new kitchen, large yard.</p>
-          <div class="specs">🛏️ 3 Beds &middot; 🛁 2 Baths &middot; 📐 1,600 sqft</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="agents reveal">
+  <!-- ========== PROCESS ========== -->
+  <section id="process">
     <div class="container">
-      <h2>Meet Our Agents</h2>
-      <div class="agent-grid">
-        <div class="agent-card reveal">
-          <div class="avatar">SR</div>
-          <h4>Sarah Reynolds</h4>
-          <p>Broker · 14 years experience</p>
+      <div class="section-header">
+        <span class="section-label">How It Works</span>
+        <h2>From Idea to Launch in 4 Simple Steps</h2>
+        <p class="section-sub">A streamlined process designed to deliver results without the hassle.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Discovery</h3>
+            <p>I learn about your business, audience, and goals. No cookie-cutter approach — every project starts with understanding.</p>
+          </div>
         </div>
-        <div class="agent-card reveal">
-          <div class="avatar">JM</div>
-          <h4>James Moore</h4>
-          <p>Senior Agent · 9 years experience</p>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Design</h3>
+            <p>I craft a custom design that aligns with your brand and optimises the user experience for conversions.</p>
+          </div>
         </div>
-        <div class="agent-card reveal">
-          <div class="avatar">LK</div>
-          <h4>Lisa Kim</h4>
-          <p>Buyer Specialist · 6 years experience</p>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Build & Refine</h3>
+            <p>I develop your site with clean code, test thoroughly, and iterate based on your feedback.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3>Launch & Grow</h3>
+            <p>I deploy your site, set up analytics, and provide ongoing support to help you keep growing.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <section class="cta reveal">
-      <h2>Want a Website Like This?</h2>
-      <p>This is a concept template for real estate agencies. We can build a custom version for your business.</p>
-      <a href="../#contact" class="btn btn-primary">Get This Website for Your Agency →</a>
-    </section>
-  </div>
+  <!-- ========== WORK / PROJECTS ========== -->
+  <section id="work">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Live Demos</span>
+        <h2>Website Templates — Try Them Live</h2>
+        <p class="section-sub">Click any demo below to explore a fully functional website. Each one is a complete design ready to be customised for your business.</p>
+      </div>
+      <div class="work-grid">
+        <div class="work-card">
+          <a href="/grind-coffee/" target="_blank" class="work-card-link">
+          <div class="work-card-img" style="background: linear-gradient(135deg, #c471ed, #f64f59);">
+            <div class="work-overlay">
+              <span class="overlay-text">🌐 View Live Demo</span>
+            </div>
+            <span class="work-placeholder">The Grind Coffee</span>
+            <span class="template-badge">✅ Live Demo</span>
+          </div>
+          </a>
+          <div class="work-card-info">
+            <span class="work-tag">Cafe / Local Business</span>
+            <h3>The Grind Coffee — Cafe Website</h3>
+            <p><strong>Design focus:</strong> Warm, inviting brand with online menu display, store locator, subscription plans, and a story-driven about page. Built to drive foot traffic and online orders.</p>
+            <p><strong>Key features:</strong> Responsive mobile menu, customer testimonial carousel, contact form, Google Maps integration, SEO-optimised content structure.</p>
+            <a href="case-studies/grind-coffee.html" class="work-case-link">Read Case Study →</a>
+          </div>
+        </div>
+        <div class="work-card">
+          <a href="/iron-haven/" target="_blank" class="work-card-link">
+          <div class="work-card-img" style="background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);">
+            <div class="work-overlay">
+              <span class="overlay-text">🌐 View Live Demo</span>
+            </div>
+            <span class="work-placeholder">Iron Haven Gym</span>
+            <span class="template-badge">✅ Live Demo</span>
+          </div>
+          </a>
+          <div class="work-card-info">
+            <span class="work-tag">Fitness / Gym</span>
+            <h3>Iron Haven — Gym Website</h3>
+            <p><strong>Design focus:</strong> Bold, high-energy design built for fitness brands. Class scheduling, membership tier display, trainer profiles, and progress tracking features.</p>
+            <p><strong>Key features:</strong> Mobile-first responsive layout, class timetable, member pricing table, trainer cards with social links, dynamic CTA sections.</p>
+            <a href="case-studies/iron-haven.html" class="work-case-link">Read Case Study →</a>
+          </div>
+        </div>
+        <div class="work-card">
+          <a href="/stag-blade/" target="_blank" class="work-card-link">
+          <div class="work-card-img" style="background: linear-gradient(135deg, #e2b04a, #c27b2b);">
+            <div class="work-overlay">
+              <span class="overlay-text">🌐 View Live Demo</span>
+            </div>
+            <span class="work-placeholder">Stag & Blade</span>
+            <span class="template-badge">✅ Live Demo</span>
+          </div>
+          </a>
+          <div class="work-card-info">
+            <span class="work-tag">Barbershop / Services</span>
+            <h3>Stag & Blade — Barbershop Website</h3>
+            <p><strong>Design focus:</strong> Premium service-provider design with online booking, service menu, staff profiles, and location map. Built for barbers, salons, and personal services.</p>
+            <p><strong>Key features:</strong> Online booking widget, service catalogue with pricing, team member bios, Instagram feed integration, mobile-optimised booking flow.</p>
+            <a href="case-studies/stag-blade.html" class="work-case-link">Read Case Study →</a>
+          </div>
+        </div>
+        <div class="work-card">
+          <a href="/harbor-realty/" target="_blank" class="work-card-link">
+          <div class="work-card-img" style="background: linear-gradient(135deg, #0d6b6b, #0a4a4a);">
+            <div class="work-overlay">
+              <span class="overlay-text">🌐 View Live Demo</span>
+            </div>
+            <span class="work-placeholder">Harbor Realty</span>
+            <span class="template-badge">✅ Live Demo</span>
+          </div>
+          </a>
+          <div class="work-card-info">
+            <span class="work-tag">Real Estate</span>
+            <h3>Harbor Realty — Estate Agency Website</h3>
+            <p><strong>Design focus:</strong> Elegant realty design with property listings, virtual tours, mortgage calculator, and agent profiles. Built for agencies, brokers, and property managers.</p>
+            <p><strong>Key features:</strong> Property search & filter, featured listings grid, agent directory, mortgage calculator tool, neighbourhood guides layout, contact capture forms.</p>
+            <a href="case-studies/harbor-realty.html" class="work-case-link">Read Case Study →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ========== TESTIMONIALS ========== -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Client Feedback</span>
+        <h2>What Local Business Owners Say</h2>
+        <p class="section-sub">Real feedback from Cardiff-area businesses I've worked with.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"Mason built our gym website from scratch — we went from having zero online presence to showing up on Google searches. The mobile design is clean and our members actually use the class schedule online now. Great communication throughout."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#302b63;">DC</div>
+            <div>
+              <strong>Derek Cross</strong>
+              <span>Halo Gym Cardiff</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"We needed a simple, professional site that looked better than our old one and actually worked on phones. Mason delivered exactly that — no fuss, no upselling, just a solid website at a fair price. Would recommend."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#c471ed;">LR</div>
+            <div>
+              <strong>Lena Rodriguez</strong>
+              <span>Local Cafe Owner</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p>"First time having a website built and Mason made the whole process straightforward. He explained everything in plain English, kept to the timeline, and the result has already brought in new enquiries through the contact form."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#43e97b;">TW</div>
+            <div>
+              <strong>Thomas Walker</strong>
+              <span>Service Business Owner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-image-placeholder">
+            <div class="about-avatar">
+              <span>ML</span>
+            </div>
+            <div class="about-tagline">Designing for impact since 2024</div>
+          </div>
+          <div class="about-experience-badge">
+            <span class="exp-num">1+</span>
+            <span class="exp-label">Years Building</span>
+          </div>
+          <div class="about-tools">
+            <span>HTML/CSS</span>
+            <span>JavaScript</span>
+            <span>Figma</span>
+            <span>SEO Basics</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-label">About Me</span>
+          <h2>Cardiff-Based Freelance Web Designer for Local Businesses</h2>
+          <p>I'm Mason — a freelance web designer based in Cardiff. I started NovaDesignLab because I noticed something: so many great local businesses in Cardiff either have no website at all, or they're stuck with an outdated one that doesn't do their work justice.</p>
+          <p>I'm relatively new to the industry, but that means every project gets my full attention. I don't use generic templates or rush through work. I take the time to understand your business, your customers, and what you want to achieve — then I build a website that actually helps you grow.</p>
+          <p>I specialise in affordable, conversion-focused websites for independent businesses — plumbers, cafes, gyms, salons, real estate agents, and more. If you run a local business in Cardiff, Penarth, Newport, or Barry, I'd love to hear from you.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <span class="feature-check">✓</span> Custom designs — no templates
+            </div>
+            <div class="about-feature">
+              <span class="feature-check">✓</span> Mobile-first & fast loading
+            </div>
+            <div class="about-feature">
+              <span class="feature-check">✓</span> Free consultation & quote
+            </div>
+            <div class="about-feature">
+              <span class="feature-check">✓</span> Ongoing support after launch
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary" style="margin-top: 8px;">
+            Let's Talk About Your Project
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Simple Pricing</span>
+        <h2>Straightforward Packages for Cardiff Businesses</h2>
+        <p class="section-sub">No hidden fees, no surprises. Just a clear price for a professional website that works.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Starter</h3>
+          <p>Perfect for new businesses or personal brands that need a clean online presence.</p>
+          <div class="pricing-amount">£299 <small>one-time</small></div>
+          <div class="pricing-detail">or £25/month for 12 months</div>
+          <ul class="pricing-features">
+            <li><span>✓</span> 1-page website</li>
+            <li><span>✓</span> Mobile responsive</li>
+            <li><span>✓</span> Contact form</li>
+            <li><span>✓</span> Basic SEO setup</li>
+            <li><span>✓</span> Hosting setup assistance</li>
+            <li><span>✓</span> 1 revision round</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Get Started →</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <h3>Business</h3>
+          <p>Ideal for established local businesses wanting a professional multi-page presence.</p>
+          <div class="pricing-amount">£599 <small>one-time</small></div>
+          <div class="pricing-detail">or £50/month for 12 months</div>
+          <ul class="pricing-features">
+            <li><span>✓</span> Up to 5 pages</li>
+            <li><span>✓</span> Mobile responsive</li>
+            <li><span>✓</span> Contact form + map</li>
+            <li><span>✓</span> On-page SEO optimisation</li>
+            <li><span>✓</span> Google Business integration</li>
+            <li><span>✓</span> 2 revision rounds</li>
+            <li><span>✓</span> 3 months hosting included</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Get Started →</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Custom</h3>
+          <p>For businesses with unique requirements — e-commerce, booking systems, or advanced features.</p>
+          <div class="pricing-amount">From £999</div>
+          <div class="pricing-detail">Custom quote based on your needs</div>
+          <ul class="pricing-features">
+            <li><span>✓</span> Unlimited pages</li>
+            <li><span>✓</span> Mobile responsive</li>
+            <li><span>✓</span> Custom features & integrations</li>
+            <li><span>✓</span> Full SEO strategy</li>
+            <li><span>✓</span> Priority support</li>
+            <li><span>✓</span> 6 months hosting included</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Get a Quote →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA / CONTACT ========== -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <div class="contact-left">
+          <span class="section-label" style="color: rgba(255,255,255,0.6);">Get in Touch</span>
+          <h2>Ready to Elevate Your Online Presence?</h2>
+          <p>Tell me about your project and I'll send you a custom proposal within 24 hours. No pressure, just honest advice.</p>
+          <div class="contact-benefits">
+            <div class="contact-benefit">
+              <span>📋</span> Free consultation & quote
+            </div>
+            <div class="contact-benefit">
+              <span>⏱️</span> Fast turnaround — most sites in 2–3 weeks
+            </div>
+            <div class="contact-benefit">
+              <span>🛡️</span> Post-launch support included
+            </div>
+          </div>
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="contact-item-icon">📧</span>
+              <span>Mason_08642@hotmail.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" action="https://script.google.com/macros/s/AKfycbzUrQHeukHrBAY5JSahwkFWyFsaqrcsVQiBa8UESWEH6KxpjKS0v6Ojxiqwh2wpclfN/exec" method="POST">
+          <iframe name="gsheet-frame" style="display:none" aria-hidden="true"></iframe>
+          <input type="hidden" name="_subject" value="New enquiry from NovaDesignLab!" />
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+          </div>
+          <input type="text" name="company" placeholder="Company Name" />
+          <select name="service" required>
+            <option value="">What service are you interested in?</option>
+            <option>New Website</option>
+            <option>Redesign / Refresh</option>
+            <option>E-Commerce Store</option>
+            <option>SEO Optimization</option>
+            <option>Maintenance & Support</option>
+            <option>Other</option>
+          </select>
+          <textarea name="message" rows="4" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+          <button type="submit" class="btn btn-primary btn-full">
+            Send Message
+            <span class="btn-arrow">✦</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
   <footer>
-    <p>📐 Template Concept &mdash; Built by <a href="https://novadesignlab.netlify.app">NovaDesignLab</a></p>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-icon">🪐</span>
+            Nova<span>DesignLab</span>
+          </a>
+          <p>Cardiff-based freelance web designer building affordable, conversion-focused websites for local businesses.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="https://www.linkedin.com/in/masonlane-web" target="_blank" aria-label="LinkedIn">💼</a>
+            <a href="https://github.com/masonlane-nova" target="_blank" aria-label="GitHub">🐙</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Portfolio</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="case-studies/index.html">Case Studies</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">E-Commerce</a></li>
+            <li><a href="#">SEO</a></li>
+            <li><a href="#">Maintenance</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:Mason_08642@hotmail.com">Mason_08642@hotmail.com</a></li>
+            <li><a href="#contact">Get a Quote</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 NovaDesignLab. All rights reserved. Built in Cardiff.</p>
+      </div>
+    </div>
   </footer>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
