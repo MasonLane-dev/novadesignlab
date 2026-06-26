@@ -2,3 +2,11 @@
 /iron-haven/* /iron-haven/index.html 200
 /stag-blade/* /stag-blade/index.html 200
 /harbor-realty/* /harbor-realty/index.html 200
+
+# Trade service pages
+/plumber-website-cardiff /plumber-website-cardiff.html 200
+/electrician-website-cardiff /electrician-website-cardiff.html 200
+/roofer-website-cardiff /roofer-website-cardiff.html 200
+
+# Blog posts
+/blog/* /blog/index.html 200
